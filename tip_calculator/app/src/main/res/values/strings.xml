@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Harold\'s Tip Calculator</string>
+    <string name="editText_amountHint">Enter bill amount</string>
+    <string name="textView_tipSliderText">0%</string>
+    <string name="textView_tipText">Tip</string>
+    <string name="textView_tipAmount">$0.00</string>
+    <string name="textView_totalText">Total</string>
+    <string name="textView_totalAmount">$0.00</string>
+
+</resources>
