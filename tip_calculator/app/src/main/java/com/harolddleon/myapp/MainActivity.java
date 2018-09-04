@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
     //declare the variables for the calculations
     private double billAmount = 0.0;
     private double totalAmount = 0.0;
-    private double percent = 0;
+    private double percent = 0.15;
     private double tip = 0.0;
 
 
