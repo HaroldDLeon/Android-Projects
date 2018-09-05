@@ -64,22 +64,29 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
-# Signing files
-.signing/
+# IntelliJ Sub-folder 
+*.iml
+**/**/.idea/workspace.xml
+**/**/.idea/tasks.xml
+**/**/.idea/gradle.xml
+**/**/.idea/assetWizardSettings.xml
+**/**/.idea/dictionaries
+**/**/.idea/libraries
+**/**Z.idea/caches
 
 # User-specific configurations
-.idea/libraries/
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/.name
-.idea/compiler.xml
-.idea/copyright/profiles_settings.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/scopes/scope_settings.xml
-.idea/vcs.xml
-*.iml
+**/**/.idea/libraries/
+**/**/.idea/workspace.xml
+**/**/.idea/tasks.xml
+**/**/.idea/.name
+**/**/.idea/compiler.xml
+**/**/.idea/copyright/profiles_settings.xml
+**/**/.idea/encodings.xmla
+**/**/.idea/misc.xml
+**/**/.idea/modules.xml
+**/**/.idea/scopes/scope_settings.xml
+**/**/.idea/vcs.xml
+**/**/*.iml
 
 # OS-specific files
 .DS_Store
@@ -89,23 +96,3 @@ fastlane/readme.md
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Subfulder user configurations
-**/.idea/gradle.xml
-**/.idea/assetWizardSettings.xml
-**/.idea/dictionaries
-**/.idea/caches
-*/.idea/libraries/
-**/.idea/workspace.xml
-*/.idea/tasks.xml
-*/.idea/.name
-*/.idea/compiler.xml
-*/.idea/copyright/profiles_settings.xml
-*/.idea/encodings.xml
-*/.idea/misc.xml
-*/.idea/modules.xml
-*/.idea/scopes/scope_settings.xml
-*/.idea/vcs.xml
-*/*.iml
-	
-tip_calculator/.idea/workspace.xml
