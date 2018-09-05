@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
             billAmount = (double) 0;
         }
         //perform tip and total calculation and update UI by calling calculate
-        calculate();//uncomment this line
+        calculate();
     }
 
     @Override
@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
     // calculate and display tip and total amounts
     private void calculate() {
         Log.d("MainActivity", "inside calculate method");
-       // format percent and display in percentTextView
 
         // calculate the tip and total
         tip = billAmount * percent;
@@ -118,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
 
         totalAmount = billAmount + tip;
         textViewTotalAmount.setText(currencyFormat.format(totalAmount));
-
 
     }
 }
