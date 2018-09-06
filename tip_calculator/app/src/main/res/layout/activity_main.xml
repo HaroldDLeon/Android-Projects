@@ -16,7 +16,9 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:maxLength="6"
-        android:padding="@dimen/padding_textView_default"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:textStyle="bold"
         android:hint="@string/editText_amountHint"/>
 
@@ -33,7 +35,7 @@
         android:padding="@dimen/padding_textView_default"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
-        android:gravity="right"
+        android:gravity="end"
         />
 
     <SeekBar
@@ -60,7 +62,7 @@
         android:padding="@dimen/padding_textView_default"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
-        android:gravity="right"
+        android:gravity="end"
         />
 
     <TextView
@@ -94,7 +96,7 @@
         android:padding="@dimen/padding_textView_default"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
-        android:gravity="right"
+        android:gravity="end"
         />
 
     <TextView
