@@ -1,5 +1,6 @@
 package com.harolddleon.myapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 import java.text.NumberFormat;
 
-public class MainActivity extends AppCompatActivity implements TextWatcher, OnSeekBarChangeListener{
+public class MainActivity extends Activity implements TextWatcher, OnSeekBarChangeListener{
 
     //declare your variables for the widgets
     private EditText editTextBillAmount;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
 
         try {
             billAmount = Double.parseDouble(charSequence.toString());
-            Log.d("MainActivity", "Bill Amount = "+billAmount);
+            Log.d("MainActivity", "Bill Amount = " + billAmount);
         } catch (NumberFormatException e) {
             e.printStackTrace();
             billAmount = (double) 0;
@@ -90,11 +91,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
     @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         percent = ((double) progress/100);
-
         textViewPercentageAmount.setText(percentFormat.format(percent));
-
-
-
         calculate();
     }
 
