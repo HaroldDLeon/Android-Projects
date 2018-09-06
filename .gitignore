@@ -87,6 +87,7 @@ fastlane/readme.md
 **/**/.idea/scopes/scope_settings.xml
 **/**/.idea/vcs.xml
 **/**/*.iml
+**/**/.idea/caches/build_file_checksums.ser
 
 # OS-specific files
 .DS_Store
@@ -97,3 +98,4 @@ fastlane/readme.md
 ehthumbs.db
 Thumbs.db
 .key/harolddleon.com
+
