@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
         //add Listeners to Widgets
         editTextBillAmount = findViewById(R.id.editText_BillAmount);
         editTextBillAmount.addTextChangedListener(this);
+
 
         textViewPercentageAmount = findViewById(R.id.textView_TipSliderAmount);
         textViewTipAmount = findViewById(R.id.textView_TipAmount);
@@ -90,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
         percent = ((double) progress/100);
 
         textViewPercentageAmount.setText(percentFormat.format(percent));
+
+
+
         calculate();
     }
 
@@ -100,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, OnSe
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        int c_progress = seekBar.getProgress();
+
+        if(c_progress > 40){
+            Toast.makeText(this, "Feeling a little generous? \uD83D\uDC40", Toast.LENGTH_SHORT).show();
+        }
+        else if(c_progress < 10) {
+            Toast.makeText(this, "That's a little too... little, isn't it? \ud83d\ude12", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
