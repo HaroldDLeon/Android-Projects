@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ScoreCounter</string>
+    <string name="HomeTeam">Miami Heat</string>
+    <string name="AwayTeam">GS Warriors</string>
+    <string name="HomeTeamScore">0</string>
+    <string name="AwayTeamScore">0</string>
+    <string name="WinnerAlert">And the winner is:</string>
+
 </resources>
