@@ -19,7 +19,7 @@
         android:text="@string/WinnerAlert"
         android:gravity="center_horizontal"
         android:textSize="25sp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorAccent"
 
         />
 
