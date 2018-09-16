@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
-    public static final String EXTRA_MESSAGE = "com.harolddleon.ScoreCounter.MESSAGE";
 
     private TextView textViewHomeScore;
     private TextView textViewAwayScore;

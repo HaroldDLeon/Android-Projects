@@ -17,7 +17,6 @@ public class WinnerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winner);
 
-        Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();
 
         winner = extras.getString("EXTRA_WINNER");
