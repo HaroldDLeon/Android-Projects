@@ -1,5 +1,6 @@
 package com.harolddleon.ScoreCounter;
 
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,15 +12,16 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.content.Intent;
 import android.content.DialogInterface;
-
+import java.util.Arrays;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, AlertDialog.OnClickListener {
 
     private TextView textViewHomeScore;
     private TextView textViewAwayScore;
     private Button buttonViewHome;
     private Button buttonViewAway;
+    private EditText input;
 
     private int homeScore = 0;
     private int awayScore = 0;
@@ -40,25 +42,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         // Create alert
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final EditText input = new EditText(this);
+        input = new EditText(this);
         builder.setTitle("Who is Miami playing against?");
 
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
         // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                buttonViewAway.setText(input.getText().toString());
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton("OK", this);
+        builder.setNegativeButton("Cancel", this);
         builder.show();
 
     }
@@ -69,6 +61,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         awayScore = 0;
 
         updateScores();
+    }
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case DialogInterface.BUTTON_NEGATIVE:
+                dialog.cancel();
+                break;
+            case DialogInterface.BUTTON_POSITIVE:
+                String text = input.getText().toString();
+                try {
+                    int color_index = Arrays.asList(Team.teams).indexOf(text);
+                    String hex = Team.colors[color_index];
+                    int color = Color.parseColor(hex);
+                    buttonViewAway.setBackgroundColor(color);
+                } catch (Exception e) {
+                }
+                buttonViewAway.setText(text);
+                break;
+        }
     }
     @Override
     public void onClick(View v) {
