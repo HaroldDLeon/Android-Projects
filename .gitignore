@@ -75,6 +75,7 @@ fastlane/readme.md
 **/**Z.idea/caches
 
 # User-specific configurations
+**/**/.idea/*
 **/**/.idea/libraries/
 **/**/.idea/workspace.xml
 **/**/.idea/tasks.xml
@@ -99,3 +100,4 @@ ehthumbs.db
 Thumbs.db
 .key/harolddleon.com
 
+ScoreCounter/.idea/runConfigurations.xml
