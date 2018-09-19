@@ -1,12 +1,18 @@
 package com.harolddleon.ScoreCounter;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.content.Intent;
+import android.content.DialogInterface;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
@@ -32,6 +38,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         buttonViewAway.setOnClickListener(this);
         buttonViewHome.setOnClickListener(this);
 
+        // Create alert
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final EditText input = new EditText(this);
+        builder.setTitle("Who is Miami playing against?");
+
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                buttonViewAway.setText(input.getText().toString());
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
+
     }
     @Override
     protected void onPause(){
@@ -39,25 +68,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         homeScore = 0;
         awayScore = 0;
 
-        textViewHomeScore.setText(Integer.toString(homeScore));
-        textViewAwayScore.setText(Integer.toString(awayScore));
+        updateScores();
     }
-
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
             awayScore += 1;
-            textViewAwayScore.setText(Integer.toString(awayScore));
+            updateScores();
             if (awayScore >= 5) {
                 awayWon();
             }
         } else {
             homeScore += 1;
-            textViewHomeScore.setText(Integer.toString(homeScore));
+            updateScores();
             if (homeScore >= 5) {
                 homeWon();
             }
         }
+    }
+    private void updateScores(){
+        textViewAwayScore.setText(String.format(Locale.US, "%d", homeScore));
+        textViewHomeScore.setText(String.format( Locale.US, "%d", homeScore));
     }
 
     private void awayWon() {
@@ -79,6 +110,4 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         intent.putExtras(extras);
         startActivity(intent);
     }
-
-
 }
