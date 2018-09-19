@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
     private void updateScores(){
-        textViewAwayScore.setText(String.format(Locale.US, "%d", homeScore));
+        textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
         textViewHomeScore.setText(String.format( Locale.US, "%d", homeScore));
     }
 
