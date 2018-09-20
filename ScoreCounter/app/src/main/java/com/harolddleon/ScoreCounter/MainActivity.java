@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome.setOnClickListener(this);
         buttonViewAway.setOnLongClickListener(this);
 
-        Toast.makeText(this, "Long press away button to change the team.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
     private void updateScores(){
         textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
-        textViewHomeScore.setText(String.format( Locale.US, "%d", homeScore));
+        textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
     }
 
     private void awayWon() {
