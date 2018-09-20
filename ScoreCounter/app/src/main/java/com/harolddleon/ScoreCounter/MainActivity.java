@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,14 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     }
     @Override
-    protected void onPause(){
-        super.onPause();
-        homeScore = 0;
-        awayScore = 0;
-
-        updateScores();
-    }
-    @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
             case DialogInterface.BUTTON_NEGATIVE:
@@ -90,31 +83,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             }
         }
     }
-    private void updateScores(){
-        textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
-        textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
-    }
-
-    private void awayWon() {
-
-        Intent intent = new Intent(this, WinnerActivity.class);
-        Bundle extras = new Bundle();
-        extras.putString("EXTRA_WINNER", (String) buttonViewAway.getText());
-        extras.putInt("EXTRA_SCORE", awayScore - homeScore);
-        intent.putExtras(extras);
-        startActivity(intent);
-    }
-
-    private void homeWon() {
-
-        Intent intent = new Intent(this, WinnerActivity.class);
-        Bundle extras = new Bundle();
-        extras.putString("EXTRA_WINNER", (String) buttonViewHome.getText());
-        extras.putInt("EXTRA_SCORE", homeScore - awayScore);
-        intent.putExtras(extras);
-        startActivity(intent);
-    }
-
     @Override
     public boolean onLongClick(View v) {
         if (v == buttonViewAway){
@@ -132,5 +100,38 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             builder.show();
         }
         return true;
+    }
+
+    private void updateScores(){
+        textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
+        textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
+    }
+
+    public void resetScores(){
+        awayScore = 0;
+        homeScore = 0;
+        updateScores();
+    }
+
+    private void awayWon() {
+
+        Intent intent = new Intent(this, WinnerActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_WINNER", (String) buttonViewAway.getText());
+        extras.putInt("EXTRA_SCORE", awayScore - homeScore);
+        intent.putExtras(extras);
+        resetScores();
+        startActivity(intent);
+    }
+
+    private void homeWon() {
+
+        Intent intent = new Intent(this, WinnerActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_WINNER", (String) buttonViewHome.getText());
+        extras.putInt("EXTRA_SCORE", homeScore - awayScore);
+        intent.putExtras(extras);
+        resetScores();
+        startActivity(intent);
     }
 }
