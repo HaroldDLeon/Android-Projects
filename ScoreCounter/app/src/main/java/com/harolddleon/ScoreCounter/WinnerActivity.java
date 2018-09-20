@@ -2,7 +2,6 @@ package com.harolddleon.ScoreCounter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.content.Intent;
 import android.os.Bundle;
 
 public class WinnerActivity extends AppCompatActivity {
@@ -26,6 +25,4 @@ public class WinnerActivity extends AppCompatActivity {
         textViewWinnerTeam = findViewById(R.id.textView_WinnerTeam);
         textViewWinnerTeam.setText(alert);
     }
-
-
 }
