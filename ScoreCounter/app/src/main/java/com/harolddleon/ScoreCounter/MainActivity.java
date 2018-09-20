@@ -10,18 +10,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.content.Intent;
 import android.content.DialogInterface;
+import android.widget.Toast;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AlertDialog.OnClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, AlertDialog.OnClickListener, OnLongClickListener {
 
     private TextView textViewHomeScore;
     private TextView textViewAwayScore;
     private Button buttonViewHome;
     private Button buttonViewAway;
     private EditText input;
+    private AlertDialog.Builder builder;
 
     private int homeScore = 0;
     private int awayScore = 0;
@@ -39,19 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         buttonViewAway.setOnClickListener(this);
         buttonViewHome.setOnClickListener(this);
+        buttonViewAway.setOnLongClickListener(this);
 
-        // Create alert
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        input = new EditText(this);
-        builder.setTitle("Who is Miami playing against?");
-
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        // Set up the buttons
-        builder.setPositiveButton("OK", this);
-        builder.setNegativeButton("Cancel", this);
-        builder.show();
+        Toast.makeText(this, "Long press away button to change the team.", Toast.LENGTH_LONG).show();
 
     }
     @Override
@@ -120,5 +113,24 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         extras.putInt("EXTRA_SCORE", homeScore - awayScore);
         intent.putExtras(extras);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (v == buttonViewAway){
+            // Create alert
+            builder = new AlertDialog.Builder(this);
+            input = new EditText(this);
+            builder.setTitle("Who is Miami playing against?");
+
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", this);
+            builder.setNegativeButton("Cancel", this);
+            builder.show();
+        }
+        return true;
     }
 }
