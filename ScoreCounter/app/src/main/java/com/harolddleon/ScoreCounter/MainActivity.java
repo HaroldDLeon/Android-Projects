@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome.setOnClickListener(this);
         buttonViewAway.setOnLongClickListener(this);
 
-        Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
 
     }
     @Override
