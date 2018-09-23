@@ -1,20 +1,20 @@
 package com.harolddleon.ScoreCounter;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.content.Intent;
-import android.content.DialogInterface;
 import android.widget.Toast;
+
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
 
     }
+
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 break;
         }
     }
+
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
@@ -83,9 +85,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             }
         }
     }
+
     @Override
     public boolean onLongClick(View v) {
-        if (v == buttonViewAway){
+        if (v == buttonViewAway) {
             // Create alert
             builder = new AlertDialog.Builder(this);
             input = new EditText(this);
@@ -102,12 +105,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         return true;
     }
 
-    private void updateScores(){
+    private void updateScores() {
         textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
         textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
     }
 
-    public void resetScores(){
+    public void resetScores() {
         awayScore = 0;
         homeScore = 0;
         updateScores();
