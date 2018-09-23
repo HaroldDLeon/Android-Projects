@@ -5,7 +5,7 @@
     <string name="HomeTeamScore">0</string>
     <string name="AwayTeamScore">0</string>
     <string name="WinnerAlert">And the winner is:</string>
-    <string name="action_settings">Test string</string>
+    <string name="action_settings">Share</string>
     <string name="sms_share">Share via SMS</string>
     <string name="phone_share">Share via Phone</string>
     <string name="map_share">Look up games.</string>

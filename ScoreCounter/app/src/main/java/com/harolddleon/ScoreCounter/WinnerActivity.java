@@ -24,6 +24,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton phone_button;
     private ImageButton sms_button;
     private ImageButton map_button;
+    private ImageButton more_share;
 
     private String alert;
     private String winner;
@@ -45,7 +46,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         winner = extras.getString("EXTRA_WINNER");
         advantage = extras.getInt("EXTRA_SCORE");
-        alert = String.format("Congratulations, %s won by %d points!", winner, advantage);
+        alert = String.format("Congratulations, %s won by %d point(s)!", winner, advantage);
 
         textViewWinnerTeam = findViewById(R.id.textView_WinnerTeam);
         textViewWinnerTeam.setText(alert);
@@ -97,6 +98,9 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         map_button = (ImageButton) findViewById(R.id.map_share);
         map_button.setOnClickListener(this);
+
+        more_share = (ImageButton) findViewById(R.id.more_share);
+        more_share.setOnClickListener(this);
     }
 
     @Override
@@ -107,6 +111,8 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
             phoneIntent();
         } else if (v == sms_button) {
             smsIntent();
+        } else if (v == more_share) {
+            shareIntent();
         }
     }
 
@@ -135,6 +141,14 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
+    }
+
+    private void shareIntent() {
+        String message = String.format("Hey! %s just won by %d point! What a game that was!", winner, advantage);
+        intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("text/plain");
+        startActivity(Intent.createChooser(intent, "Use an app"));
     }
 
 
