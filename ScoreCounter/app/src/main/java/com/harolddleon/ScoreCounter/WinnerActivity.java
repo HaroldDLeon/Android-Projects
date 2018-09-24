@@ -1,22 +1,25 @@
 package com.harolddleon.ScoreCounter;
 
 import android.animation.ObjectAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class WinnerActivity extends AppCompatActivity implements View.OnClickListener {
+public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener {
 
     private AlertDialog.Builder builder;
     private TextView textViewWinnerTeam;
@@ -108,16 +111,26 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         if (v == map_button) {
             mapIntent();
         } else if (v == phone_button) {
-            phoneIntent();
+            showAlert();
+//            phoneIntent();
         } else if (v == sms_button) {
             smsIntent();
         } else if (v == more_share) {
             shareIntent();
         }
     }
-
+    private void showAlert(){
+        builder = new AlertDialog.Builder(this);
+        EditText input = new EditText(this);
+        builder.setTitle("What's the phone number to call?");
+        input.setInputType(InputType.TYPE_CLASS_PHONE);
+        builder.setView(input);
+        builder.setPositiveButton("Call", this);
+        builder.setNegativeButton("Cancel", this);
+        builder.show();
+    }
     private void mapIntent() {
-        Uri geolocation = Uri.parse("geo:0,0?q=basketball%20arenas");
+        Uri geolocation = Uri.parse("geo:0,0?q=basketball%20near%20me");
         intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(geolocation);
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -152,4 +165,15 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which){
+            case DialogInterface.BUTTON_POSITIVE:
+                Toast.makeText(this, "Positive was pressed.", Toast.LENGTH_LONG).show();
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                dialog.cancel();
+                break;
+        }
+    }
 }
