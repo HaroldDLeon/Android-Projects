@@ -9,5 +9,9 @@
     <string name="sms_share">Share via SMS</string>
     <string name="phone_share">Share via Phone</string>
     <string name="map_share">Look up games.</string>
+    <string name="sms_icon">sms icon</string>
+    <string name="phone_icon">phone icon</string>
+    <string name="map_icon">map icon</string>
+    <string name="image_description">Image of NBA\'s Larry O\'Brien Trophy</string>
 
 </resources>

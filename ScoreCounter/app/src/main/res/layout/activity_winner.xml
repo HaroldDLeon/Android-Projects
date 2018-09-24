@@ -8,12 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".WinnerActivity">
 
-    <!--TODO: Change size of background image -->
-    <!-- TODO: Buttons should be able to
-        - Call friends to share the good news.
-        - Send a message with the champion and points they won by.
-        - Search on maps for the nearest arena for the sports' -->
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/winner_toolbar"
         android:layout_width="fill_parent"
@@ -36,6 +30,8 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_row="1"
         android:layout_rowSpan="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:gravity="center_horizontal"
         android:text="@string/WinnerAlert"
         android:textAlignment="center"
@@ -50,7 +46,8 @@
         android:layout_column="0"
         android:layout_row="4"
         android:layout_rowSpan="3"
-        android:src="@drawable/finals_trophy" />
+        android:src="@drawable/finals_trophy"
+        android:contentDescription="@string/image_description" />
 
     <LinearLayout
         android:id="@+id/share_layout"
@@ -69,7 +66,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-            android:contentDescription="phone icon"
+            android:contentDescription="@string/phone_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_phone" />
@@ -79,7 +76,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-            android:contentDescription="sms icon"
+            android:contentDescription="@string/sms_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_textsms" />
@@ -89,7 +86,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-            android:contentDescription="map icon"
+            android:contentDescription="@string/map_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_map" />
@@ -99,7 +96,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-            android:contentDescription="map icon"
+            android:contentDescription="@string/map_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_baseline_more" />

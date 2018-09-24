@@ -122,7 +122,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private void showPhoneInput(){
         builder = new AlertDialog.Builder(this);
         input = new EditText(this);
-        builder.setTitle("What's the phone number to call?");
+        builder.setTitle("What's the phone number to dial?");
         input.setInputType(InputType.TYPE_CLASS_PHONE);
         builder.setView(input);
         builder.setPositiveButton("Call", this);
