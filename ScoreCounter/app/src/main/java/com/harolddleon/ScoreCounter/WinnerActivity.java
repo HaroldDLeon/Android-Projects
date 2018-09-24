@@ -30,6 +30,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private ImageButton more_share;
 
     private String alert;
+    private EditText input;
     private String winner;
     private Intent intent;
     private int advantage;
@@ -68,14 +69,14 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(this, "Choose a share medium:", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Share the good news!", Toast.LENGTH_SHORT).show();
                 createLayout();
                 return true;
             case R.id.sms_menu:
                 smsIntent();
                 return true;
             case R.id.phone_menu:
-                phoneIntent();
+                showPhoneInput();
                 return true;
             case R.id.map_menu:
                 mapIntent();
@@ -111,17 +112,16 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         if (v == map_button) {
             mapIntent();
         } else if (v == phone_button) {
-            showAlert();
-//            phoneIntent();
+            showPhoneInput();
         } else if (v == sms_button) {
             smsIntent();
         } else if (v == more_share) {
             shareIntent();
         }
     }
-    private void showAlert(){
+    private void showPhoneInput(){
         builder = new AlertDialog.Builder(this);
-        EditText input = new EditText(this);
+        input = new EditText(this);
         builder.setTitle("What's the phone number to call?");
         input.setInputType(InputType.TYPE_CLASS_PHONE);
         builder.setView(input);
@@ -138,9 +138,9 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void phoneIntent() {
+    private void phoneIntent(String phone) {
         intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + "877-CASH-NOW"));
+        intent.setData(Uri.parse("tel:" + phone));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
@@ -169,7 +169,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(DialogInterface dialog, int which) {
         switch (which){
             case DialogInterface.BUTTON_POSITIVE:
-                Toast.makeText(this, "Positive was pressed.", Toast.LENGTH_LONG).show();
+                phoneIntent(input.getText().toString());
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
                 dialog.cancel();
