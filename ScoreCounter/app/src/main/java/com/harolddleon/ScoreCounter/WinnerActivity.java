@@ -34,6 +34,8 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private String winner;
     private Intent intent;
     private int advantage;
+    private boolean layout_visible = false;
+    private boolean layout_initiated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,6 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(this, "Share the good news!", Toast.LENGTH_SHORT).show();
                 createLayout();
                 return true;
             case R.id.sms_menu:
@@ -86,10 +87,24 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void createLayout() {
-        share_layout.setVisibility(View.VISIBLE);
-        setListeners();
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, View.ALPHA, 0,1).setDuration(1000);
-        objectAnimator.start();
+        if(!layout_initiated){
+            Toast.makeText(this, "Share the good news!", Toast.LENGTH_SHORT).show();
+            layout_initiated = !layout_initiated;
+        }
+
+        if(!layout_visible) {
+            setListeners();
+            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, View.ALPHA, 0, 1).setDuration(1000);
+            share_layout.setVisibility(View.VISIBLE);
+            objectAnimator.start();
+        }
+        else{
+            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, View.ALPHA, 1, 0).setDuration(1000);
+            objectAnimator.start();
+            share_layout.setVisibility(View.GONE);
+        }
+        layout_visible = !layout_visible;
+
     }
 
     private void setListeners() {
