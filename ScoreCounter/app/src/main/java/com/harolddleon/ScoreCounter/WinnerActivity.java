@@ -54,7 +54,6 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         textViewWinnerTeam = findViewById(R.id.textView_WinnerTeam);
         textViewWinnerTeam.setText(alert);
-
     }
 
     @Override
@@ -89,7 +88,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private void createLayout() {
         share_layout.setVisibility(View.VISIBLE);
         setListeners();
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, "TranslationY", -100);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, View.ALPHA, 0,1).setDuration(1000);
         objectAnimator.start();
     }
 
