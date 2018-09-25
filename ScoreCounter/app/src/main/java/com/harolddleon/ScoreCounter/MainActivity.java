@@ -2,6 +2,7 @@ package com.harolddleon.ScoreCounter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     private int homeScore = 0;
     private int awayScore = 0;
+    private boolean layout_initiated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +47,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome.setOnClickListener(this);
         buttonViewAway.setOnLongClickListener(this);
 
-        Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
+        SharedPreferences preferences = getSharedPreferences("preferences", 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        layout_initiated = preferences.getBoolean("layout_initiated", false);
 
+        if (!layout_initiated) {
+            Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
+            editor.putBoolean("layout_initiated", true).commit();
+        }
     }
-
+    
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
