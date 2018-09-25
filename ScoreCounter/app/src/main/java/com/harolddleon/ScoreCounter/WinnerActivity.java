@@ -161,9 +161,9 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void smsIntent() {
-        String message = String.format("Hey! %s just won by %d point! What a game that was!", winner, advantage);
-        intent = new Intent(Intent.ACTION_SEND);
-        intent.setData(Uri.parse("smsto:"));  // This ensures only SMS apps respond
+        String message = String.format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
+        intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("sms:"));
         intent.putExtra("sms_body", message);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -171,7 +171,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void shareIntent() {
-        String message = String.format("Hey! %s just won by %d point! What a game that was!", winner, advantage);
+        String message = String.format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
         intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.setType("text/plain");
