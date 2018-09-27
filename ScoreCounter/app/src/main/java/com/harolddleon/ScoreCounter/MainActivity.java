@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             editor.putBoolean("layout_initiated", true).commit();
         }
     }
-    
+ 
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {

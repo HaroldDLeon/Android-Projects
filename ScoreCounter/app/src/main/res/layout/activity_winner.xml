@@ -27,12 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_columnSpan="2"
+        android:layout_marginTop="5dp"
         android:layout_row="1"
         android:layout_rowSpan="1"
-        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:gravity="center_horizontal"
         android:text="@string/WinnerAlert"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
@@ -46,8 +46,8 @@
         android:layout_column="0"
         android:layout_row="4"
         android:layout_rowSpan="3"
-        android:src="@drawable/finals_trophy"
-        android:contentDescription="@string/image_description" />
+        android:contentDescription="@string/image_description"
+        android:src="@drawable/finals_trophy" />
 
     <LinearLayout
 
