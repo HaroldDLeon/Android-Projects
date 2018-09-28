@@ -27,15 +27,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     private Button buttonViewAway;
     private EditText input;
     private AlertDialog.Builder builder;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     private int homeScore = 0;
     private int awayScore = 0;
+    private int color;
+    private String text;
     private boolean layout_initiated;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getSharedPreferences("preferences", 0);
+        editor = preferences.edit();
 
         textViewHomeScore = findViewById(R.id.textView_HomeTeamScore);
         textViewAwayScore = findViewById(R.id.textView_AwayTeamScore);
@@ -47,13 +55,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome.setOnClickListener(this);
         buttonViewAway.setOnLongClickListener(this);
 
-        SharedPreferences preferences = getSharedPreferences("preferences", 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        layout_initiated = preferences.getBoolean("layout_initiated", false);
+        text = preferences.getString("team", "Golden State Warriors");
+        color = Color.parseColor(preferences.getString("color", "#006BB6"));
 
+        buttonViewAway.setText(text);
+        buttonViewAway.setBackgroundColor(color);
+
+        layout_initiated = preferences.getBoolean("layout_initiated", false);
         if (!layout_initiated) {
             Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
-            editor.putBoolean("layout_initiated", true).commit();
+            editor.putBoolean("layout_initiated", true).apply();
         }
     }
  
@@ -64,19 +75,22 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 dialog.cancel();
                 break;
             case DialogInterface.BUTTON_POSITIVE:
-                String text = input.getText().toString();
                 try {
+                    text = input.getText().toString();
                     int color_index = Arrays.asList(Team.teams).indexOf(text);
                     String hex = Team.colors[color_index];
-                    int color = Color.parseColor(hex);
+                    color = Color.parseColor(hex);
+
                     buttonViewAway.setBackgroundColor(color);
+                    editor.putString("team", text).apply();
+                    editor.putString("color", hex).apply();
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 buttonViewAway.setText(text);
                 break;
         }
     }
-
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
@@ -97,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public boolean onLongClick(View v) {
         if (v == buttonViewAway) {
-            // Create alert
             builder = new AlertDialog.Builder(this);
             input = new EditText(this);
             builder.setTitle("Who is Miami playing against?");
@@ -105,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
 
-            // Set up the buttons
             builder.setPositiveButton("OK", this);
             builder.setNegativeButton("Cancel", this);
             builder.show();
@@ -118,29 +130,29 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
     }
 
-    public void resetScores() {
+    private void resetScores() {
         awayScore = 0;
         homeScore = 0;
         updateScores();
     }
 
     private void awayWon() {
-
-        Intent intent = new Intent(this, WinnerActivity.class);
-        Bundle extras = new Bundle();
-        extras.putString("EXTRA_WINNER", (String) buttonViewAway.getText());
-        extras.putInt("EXTRA_SCORE", awayScore - homeScore);
-        intent.putExtras(extras);
-        resetScores();
-        startActivity(intent);
+        String awayTeam = buttonViewAway.getText().toString();
+        int score = awayScore - homeScore;
+        createIntent(awayTeam, score);
     }
 
     private void homeWon() {
+        String homeTeam = buttonViewHome.getText().toString();
+        int score = homeScore - awayScore;
+        createIntent(homeTeam, score );
 
+    }
+    private void createIntent(String winner, int score){
         Intent intent = new Intent(this, WinnerActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("EXTRA_WINNER", (String) buttonViewHome.getText());
-        extras.putInt("EXTRA_SCORE", homeScore - awayScore);
+        extras.putString("EXTRA_WINNER", winner);
+        extras.putInt("EXTRA_SCORE", score);
         intent.putExtras(extras);
         resetScores();
         startActivity(intent);
