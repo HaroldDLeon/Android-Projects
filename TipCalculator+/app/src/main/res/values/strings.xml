@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Tip Calculator+</string>
+    <string name="amountHint">Enter bill amount</string>
+    <string name="tipSliderAmount">15%</string>
+    <string name="tipText">Tip</string>
+    <string name="tipAmount">$0.00</string>
+    <string name="totalText">Total</string>
+    <string name="totalAmount">$0.00</string>
+    <string name="perPersonAmount">$0.00</string>
+    <string name="roundingText">Round</string>
+    <string name="roundingTip">Tip</string>
+    <string name="roundingNone">None</string>
+    <string name="roundingTotal">Total</string>
+    <string name="numberPicker">Guests</string>
+    <string name="perPersonText">P. Person</string>
+    <string name="mainInfo">Use the guest slider to modify the amount of guests you\'re splitting the bill with. (Up to a max of 10)</string>
+
 </resources>

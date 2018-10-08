@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginLeftRight">15dp</dimen>
+    <dimen name="padding_textView_default">15dp</dimen>
+</resources>
