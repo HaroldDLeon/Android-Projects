@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (item.getItemId()) {
             case R.id.action_info:
-                showPhoneInput();
+                showInfo();
                 return true;
             case R.id.action_share:
                 shareIntent();
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void afterTextChanged(Editable s) {
     }
 
-    private void showPhoneInput() {
+    private void showInfo() {
         builder = new AlertDialog.Builder(this);
         String info_message = getString(R.string.mainInfo);
         builder.setTitle("Info sample");
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void shareIntent() {
-        String message = String.format(Locale.US, "Hey, the bill comes out at %s, tip of %s, total of %s, which is %s per person.",
+        String message = String.format(Locale.US, "Hey, the bill comes out at $%s + tip of %s = total of %s, which is %s per person.",
                 billAmount, tvTip.getText().toString(), tvTotal.getText().toString(), currencyFormat.format(perPersonAmount)
         );
         intent = new Intent(Intent.ACTION_SEND);
