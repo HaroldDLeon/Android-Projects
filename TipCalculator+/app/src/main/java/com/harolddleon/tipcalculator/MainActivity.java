@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void shareIntent() {
-        String message = String.format(Locale.US, "Hey, the bill comes out at %s, tip of %s, total of %s, which is %f per person.",
-                billAmount, tvTip.getText().toString(), tvTotal.getText().toString(), (double) Math.round(perPersonAmount * 100) / 100
+        String message = String.format(Locale.US, "Hey, the bill comes out at %s, tip of %s, total of %s, which is %s per person.",
+                billAmount, tvTip.getText().toString(), tvTotal.getText().toString(), currencyFormat.format(perPersonAmount)
         );
         intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, message);
