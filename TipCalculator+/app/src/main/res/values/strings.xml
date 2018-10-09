@@ -13,6 +13,6 @@
     <string name="roundingTotal">Total</string>
     <string name="numberPicker">Guests</string>
     <string name="perPersonText">p/p</string>
-    <string name="mainInfo">Use the guest slider to modify the amount of guests you\'re splitting the bill with. (Up to a max of 10)</string>
+    <string name="mainInfo">Use the guest picker to chose the amount of guests you\'re splitting the bill with. (Up to a max of 10)</string>
 
 </resources>

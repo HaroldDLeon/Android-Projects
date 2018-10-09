@@ -54,13 +54,13 @@
 
     <SeekBar
         android:id="@+id/SeekBarView"
-        android:layout_width="350dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_column="1"
         android:layout_row="2"
         android:padding="0dp"
         android:progress="15"
-        android:layout_gravity="fill_vertical"/>
+        android:layout_gravity="fill_vertical|fill_horizontal" />
 
     <TextView
         android:id="@+id/tipText"
@@ -181,8 +181,9 @@
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_column="1"
+        android:layout_marginEnd="3dp"
         android:layout_row="6"
-        android:layout_gravity="center_horizontal|fill"/>
+        android:layout_gravity="center_horizontal|fill_horizontal" />
 
     <TextView
         android:id="@+id/totalPerPersonText"
@@ -209,10 +210,8 @@
         android:gravity="center"
         android:padding="@dimen/padding_textView_default"
         android:text="@string/perPersonAmount"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
-
-
-
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"/>
 
 
 </GridLayout>

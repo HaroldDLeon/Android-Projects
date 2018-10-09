@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showInfo() {
         builder = new AlertDialog.Builder(this);
         String info_message = getString(R.string.mainInfo);
-        builder.setTitle("Info sample");
+        builder.setTitle("Information");
         builder.setMessage(info_message);
         builder.setPositiveButton("Got it", this);
         builder.show();
