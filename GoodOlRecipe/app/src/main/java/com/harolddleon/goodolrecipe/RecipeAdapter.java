@@ -1,6 +1,7 @@
 package com.harolddleon.goodolrecipe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
 import com.bumptech.glide.Glide;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     public int getItemCount() {
         return recipes.size();
     }
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView titleText;
         private TextView infoText;
         private ImageView recipeImage;
@@ -50,11 +52,22 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
             titleText = (TextView) itemView.findViewById(R.id.title);
             infoText = (TextView)itemView.findViewById(R.id.subTitle);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
+            itemView.setOnClickListener(this);
 
         }
         void bindTo(Recipe currentRecipe){
             titleText.setText(currentRecipe.getTitle());
             infoText.setText(currentRecipe.getInfo());
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Recipe currentRecipe = recipes.get(getAdapterPosition());
+            Intent detail_intent = new Intent(context, DetailActivity.class);
+            detail_intent.putExtra("title", currentRecipe.getTitle());
+            detail_intent.putExtra("image", currentRecipe.getImageResource());
+            context.startActivity(detail_intent);
 
         }
     }
