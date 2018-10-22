@@ -49,4 +49,5 @@
         <item>@drawable/img_tacos</item>
     </array>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_add_item">AddItemActivity</string>
 </resources>

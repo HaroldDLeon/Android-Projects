@@ -24,6 +24,7 @@
         android:id="@+id/recipeImageDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:adjustViewBounds="true"
         android:contentDescription="@string/image_desc" />
 
@@ -39,7 +40,7 @@
 
     <TextView
         android:id="@+id/recipeTagDetail"
-        style="@style/TextAppearance.AppCompat.Subhead"
+        style="@style/TextAppearance.AppCompat.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -49,12 +50,12 @@
 
     <TextView
         android:id="@+id/recipeDescriptionDetail"
-        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_below="@id/recipeTitleDetail"
         android:padding="8dp"
-        android:text="@string/description_placeholder" />
+        android:text="@string/description_placeholder"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
 
 </RelativeLayout>

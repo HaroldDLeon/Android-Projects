@@ -11,13 +11,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView reciclerView;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
                 (ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN
-                        | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT){
+                        | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
@@ -80,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
         recipes.clear();
 
-        for(int i=0; i<recipeList.length; i++){
-            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeDescription[i], recipeImages.getResourceId(i,0)));
+        for (int i = 0; i < recipeList.length; i++) {
+            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeDescription[i], recipeImages.getResourceId(i, 0)));
         }
         recipeImages.recycle();
         recipeAdapter.notifyDataSetChanged();
