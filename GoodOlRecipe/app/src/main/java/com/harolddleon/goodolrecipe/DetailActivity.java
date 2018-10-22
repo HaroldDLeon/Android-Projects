@@ -21,12 +21,15 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView recipeTitle = (TextView) findViewById(R.id.recipeTitleDetail);
         ImageView recipeImage = (ImageView) findViewById(R.id.recipeImageDetail);
-        Intent intent = getIntent();
+        TextView recipeTitle = (TextView) findViewById(R.id.recipeTitleDetail);
+        TextView recipeDescription = (TextView) findViewById(R.id.recipeDescriptionDetail);
 
-        recipeTitle.setText(intent.getStringExtra("title"));
+        Intent intent = getIntent();
         Glide.with(this).load(intent.getIntExtra("image", 0)).into(recipeImage);
+        recipeTitle.setText(intent.getStringExtra("title"));
+        recipeDescription.setText(intent.getStringExtra("description"));
+
 
 
     }

@@ -45,12 +45,14 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView titleText;
         private TextView infoText;
+        private TextView descriptionText;
         private ImageView recipeImage;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleText = (TextView) itemView.findViewById(R.id.title);
             infoText = (TextView)itemView.findViewById(R.id.subTitle);
+            descriptionText = (TextView) itemView.findViewById(R.id.recipeDescriptionDetail);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
             itemView.setOnClickListener(this);
 
@@ -67,6 +69,7 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
             Intent detail_intent = new Intent(context, DetailActivity.class);
             detail_intent.putExtra("title", currentRecipe.getTitle());
             detail_intent.putExtra("image", currentRecipe.getImageResource());
+            detail_intent.putExtra("description", currentRecipe.getDescription());
             context.startActivity(detail_intent);
 
         }

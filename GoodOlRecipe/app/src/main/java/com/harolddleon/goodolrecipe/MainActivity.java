@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -66,16 +67,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
+        reciclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
+
     }
 
     private void initialize() {
         String[] recipeList = getResources().getStringArray(R.array.recipe_titles);
         String[] recipeInfo = getResources().getStringArray(R.array.recipe_info);
+        String[] recipeDescription = getResources().getStringArray(R.array.recipe_descriptions);
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
         recipes.clear();
 
         for(int i=0; i<recipeList.length; i++){
-            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeImages.getResourceId(i,0)));
+            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeDescription[i], recipeImages.getResourceId(i,0)));
         }
         recipeImages.recycle();
         recipeAdapter.notifyDataSetChanged();
