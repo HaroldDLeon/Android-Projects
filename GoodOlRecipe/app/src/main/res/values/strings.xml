@@ -2,10 +2,9 @@
     <string name="app_name">Good Ol\' Recipe</string>
     <string name="action_settings">Settings</string>
     <string name="title_placeholder">Title</string>
-    <string name="news_placeholder">News</string>
-    <string name="sports_info_placeholder">Here is some news</string>
+    <string name="description_placeholder">I\'m a description!</string>
     <string name="image_desc">Image for the current recipe</string>
-    <string name="recipe_detail_placeholder">
+    <string name="recipe_detail_placeholder" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo arcu, rutrum at viverra in, ornare in arcu.
         Nullam dolor urna, porta id tempor id, ultricies in sapien. Praesent vehicula ex id blandit semper.
         Sed sagittis at metus facilisis egestas. Suspendisse ornare metus sit amet velit vehicula commodo.
@@ -16,22 +15,38 @@
     </string>
 
     <string-array name="recipe_titles">
+        <item>Spaguetti</item>
         <item>Meatballs</item>
-        <item>Lasagna</item>
-        <item>Empanadas</item>
+        <item>Mofongo</item>
+        <item>Salmon Avocado</item>
+        <item>Lemon Chicken Sandwich</item>
+        <item>Tacos</item>
     </string-array>
 
     <string-array name="recipe_info">
         <item>Very tasty treat. Would recommend</item>
         <item>One of the best things you can try</item>
         <item>Excellent stuff. 10/10</item>
+        <item>Great sushi, best ingredients</item>
+        <item>Lemon? Check. Chicken? Check. Awesome? Check</item>
+        <item>Viva Mexico!</item>
+    </string-array>
+    <string-array name="recipe_descriptions">
+        <item>Hello</item>
+        <item>Meat</item>
+        <item>Dominican</item>
+        <item>Salmon</item>
+        <item>Sandwich</item>
+        <item>Tacos</item>
     </string-array>
 
     <array name="recipe_images">
-        <item>@drawable/img_baseball</item>
-        <item>@drawable/img_badminton</item>
-        <item>@drawable/img_basketball</item>
-
+        <item>@drawable/img_spaguetti</item>
+        <item>@drawable/img_meatballs</item>
+        <item>@drawable/img_mofongo</item>
+        <item>@drawable/img_salmon_avocado</item>
+        <item>@drawable/img_chicken_sandwich</item>
+        <item>@drawable/img_tacos</item>
     </array>
     <string name="title_activity_detail">DetailActivity</string>
 </resources>
