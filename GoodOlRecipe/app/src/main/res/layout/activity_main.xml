@@ -32,11 +32,11 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
         android:background="@color/colorAccent"
-        android:scaleType="center"
-        app:srcCompat="@drawable/ic_add_circle_black" />
+        app:srcCompat="@drawable/ic_add_circle" />
 
 </RelativeLayout>
