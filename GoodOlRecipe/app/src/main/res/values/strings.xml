@@ -50,4 +50,5 @@
     </array>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="activity_add_item">Add new recipe</string>
 </resources>
