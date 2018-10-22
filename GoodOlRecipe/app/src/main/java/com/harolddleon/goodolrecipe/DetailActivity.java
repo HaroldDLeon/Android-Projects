@@ -18,6 +18,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarDetail);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -30,6 +31,8 @@ public class DetailActivity extends AppCompatActivity {
         recipeTitle.setText(intent.getStringExtra("title"));
         recipeDescription.setText(intent.getStringExtra("description"));
 
+        toolbar.setTitle(recipeTitle.getText());
+        setSupportActionBar(toolbar);
 
 
     }
