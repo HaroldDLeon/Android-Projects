@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -20,7 +18,7 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     private ArrayList<Recipe> recipes;
     private Context context;
 
-    RecipeAdapter(Context context, ArrayList<Recipe> recipes){
+    RecipeAdapter(Context context, ArrayList<Recipe> recipes) {
         this.recipes = recipes;
         this.context = context;
     }
@@ -42,7 +40,8 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     public int getItemCount() {
         return recipes.size();
     }
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView titleText;
         private TextView infoText;
         private TextView descriptionText;
@@ -51,13 +50,14 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             titleText = (TextView) itemView.findViewById(R.id.title);
-            infoText = (TextView)itemView.findViewById(R.id.subTitle);
+            infoText = (TextView) itemView.findViewById(R.id.subTitle);
             descriptionText = (TextView) itemView.findViewById(R.id.recipeDescriptionDetail);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
             itemView.setOnClickListener(this);
 
         }
-        void bindTo(Recipe currentRecipe){
+
+        void bindTo(Recipe currentRecipe) {
             titleText.setText(currentRecipe.getTitle());
             infoText.setText(currentRecipe.getInfo());
 

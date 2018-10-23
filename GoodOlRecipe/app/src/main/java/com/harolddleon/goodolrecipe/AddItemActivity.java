@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class AddItemActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
     private EditText recipeTitle;

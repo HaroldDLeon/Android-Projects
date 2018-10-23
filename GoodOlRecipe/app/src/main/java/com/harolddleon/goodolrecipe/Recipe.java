@@ -13,35 +13,35 @@ public class Recipe {
         this.imageResource = imageResource;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    String getInfo() {
+        return info;
     }
 
     void setInfo(String info) {
         this.info = info;
     }
 
-    void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
-    }
-
-    void setDescription(String description) {
-        this.description = description;
-    }
-
-    String getInfo() {
-        return info;
-    }
-
     String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     String getDescription() {
         return description;
     }
 
+    void setDescription(String description) {
+        this.description = description;
+    }
+
     int getImageResource() {
         return imageResource;
+    }
+
+    void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
     }
 }
