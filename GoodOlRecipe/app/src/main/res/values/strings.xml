@@ -32,9 +32,9 @@
         <item>Viva Mexico!</item>
     </string-array>
     <string-array name="recipe_descriptions">
-        <item>Hello</item>
-        <item>Meat</item>
-        <item>Dominican</item>
+        <item>Incredibly tasty italian pasta</item>
+        <item>Want to go to Ikea?</item>
+        <item>Dale mambo!</item>
         <item>Salmon</item>
         <item>Sandwich</item>
         <item>Tacos</item>
@@ -51,4 +51,9 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_add_item">AddItemActivity</string>
     <string name="activity_add_item">Add new recipe</string>
+    <string name="EditView_AddItemTitle">Recipe title</string>
+    <string name="textView_AddItemTitle">Title</string>
+    <string name="textView_AddItemDescription">Description</string>
+    <string name="editText_AddItemDescription">Recipe description</string>
+    <string name="button_AddItemSend">Add</string>
 </resources>
