@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
+
+    <!--android:background="@null"-->
+    <!--app:elevation="0dp"-->
+    <!--android:translationZ="0.1dp"-->
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,8 +21,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarDetail"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="#00c62828"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
@@ -30,32 +37,34 @@
 
     <TextView
         android:id="@+id/recipeTitleDetail"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/recipeImageDetail"
-        android:theme="@style/ThemeOverlay.AppCompat"
+        android:layout_below="@id/recipeImageDetail"
+        android:layout_marginVertical="@dimen/activity_text_padding"
+        android:layout_marginHorizontal="@dimen/activity_card_end_margin"
         android:text="@string/title_placeholder"
-        android:padding="8dp"
-        style="@style/TextAppearance.AppCompat.Headline" />
+        android:theme="@style/ThemeOverlay.AppCompat" />
 
     <TextView
         android:id="@+id/recipeTagDetail"
         style="@style/TextAppearance.AppCompat.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_below="@id/recipeTitleDetail"
-        android:padding="8dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginHorizontal="@dimen/activity_card_end_margin"
         android:text="@string/description_placeholder" />
 
     <TextView
         android:id="@+id/recipeDescriptionDetail"
+        style="@style/TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/recipeTitleDetail"
-        android:padding="8dp"
-        android:text="@string/description_placeholder"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        style="@style/TextAppearance.AppCompat.Subhead"/>
+        android:layout_below="@id/recipeTagDetail"
+        android:layout_marginVertical="5dp"
+        android:layout_marginHorizontal="@dimen/activity_card_end_margin"
+        android:text="@string/description_placeholder" />
 
 </RelativeLayout>
+</ScrollView>
