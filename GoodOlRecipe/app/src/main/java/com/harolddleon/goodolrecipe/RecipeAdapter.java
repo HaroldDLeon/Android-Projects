@@ -60,7 +60,6 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
         void bindTo(Recipe currentRecipe) {
             titleText.setText(currentRecipe.getTitle());
             infoText.setText(currentRecipe.getInfo());
-
         }
 
         @Override
@@ -68,8 +67,9 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
             Recipe currentRecipe = recipes.get(getAdapterPosition());
             Intent detail_intent = new Intent(context, DetailActivity.class);
             detail_intent.putExtra("title", currentRecipe.getTitle());
-            detail_intent.putExtra("image", currentRecipe.getImageResource());
+            detail_intent.putExtra("info", currentRecipe.getInfo());
             detail_intent.putExtra("description", currentRecipe.getDescription());
+            detail_intent.putExtra("image", currentRecipe.getImageResource());
             context.startActivity(detail_intent);
 
         }

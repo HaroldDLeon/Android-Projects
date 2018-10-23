@@ -21,13 +21,14 @@ public class DetailActivity extends AppCompatActivity {
 
         ImageView recipeImage = (ImageView) findViewById(R.id.recipeImageDetail);
         TextView recipeTitle = (TextView) findViewById(R.id.recipeTitleDetail);
+        TextView recipeInfo = (TextView) findViewById(R.id.recipeTagDetail);
         TextView recipeDescription = (TextView) findViewById(R.id.recipeDescriptionDetail);
 
         Intent intent = getIntent();
         Glide.with(this).load(intent.getIntExtra("image", 0)).into(recipeImage);
         recipeTitle.setText(intent.getStringExtra("title"));
         recipeDescription.setText(intent.getStringExtra("description"));
-
+        recipeInfo.setText(intent.getStringExtra("info"));
         toolbar.setTitle(recipeTitle.getText());
 //        Only Enable if the images of the recipes were changed
 //        toolbar.setBackground(null);
