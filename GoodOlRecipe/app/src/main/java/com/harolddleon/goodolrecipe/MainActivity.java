@@ -19,9 +19,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     private RecyclerView reciclerView;
     private ArrayList<Recipe> recipes;
     private RecipeAdapter recipeAdapter;
+    private Integer recipeAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +72,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
         reciclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
-        Intent intent = getIntent();
 
-        String new_recipe_title = intent.getStringExtra("new_recipe_title");
-        String new_recipe_description = intent.getStringExtra("new_recipe_description");
-        addRecipe(new_recipe_title, new_recipe_description);
+        Intent intent = this.getIntent();
+
+        if (intent.getExtras() != null) {
+            String new_recipe_title = intent.getStringExtra("new_recipe_title");
+            String new_recipe_description = intent.getStringExtra("new_recipe_description");
+            addRecipe(new_recipe_title, new_recipe_description);
+        }
     }
 
     private void initialize() {
@@ -82,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String[] recipeInfo = getResources().getStringArray(R.array.recipe_info);
         String[] recipeDescription = getResources().getStringArray(R.array.recipe_descriptions);
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
+        recipeAmount = recipeInfo.length;
         recipes.clear();
 
         for (int i = 0; i < recipeList.length; i++) {
@@ -93,11 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addRecipe(String title, String recipeDescription) {
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
-        recipes.add(new Recipe(title, "", recipeDescription, recipeImages.getResourceId(0, 0)));
+        recipes.add(new Recipe(title, "", recipeDescription, recipeImages.getResourceId(recipeAmount, recipeAmount)));
         recipeImages.recycle();
         recipeAdapter.notifyItemInserted(recipes.size());
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

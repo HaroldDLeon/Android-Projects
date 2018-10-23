@@ -4,6 +4,14 @@
     <string name="title_placeholder">Title</string>
     <string name="description_placeholder">I\'m a description!</string>
     <string name="image_desc">Image for the current recipe</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="activity_add_item">Add new recipe</string>
+    <string name="EditView_AddItemTitle">Recipe title</string>
+    <string name="textView_AddItemTitle">Title</string>
+    <string name="textView_AddItemDescription">Description</string>
+    <string name="editText_AddItemDescription">Recipe description</string>
+    <string name="button_AddItemSend">Add</string>
     <string name="recipe_detail_placeholder" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo arcu, rutrum at viverra in, ornare in arcu.
         Nullam dolor urna, porta id tempor id, ultricies in sapien. Praesent vehicula ex id blandit semper.
@@ -47,13 +55,6 @@
         <item>@drawable/img_salmon_avocado</item>
         <item>@drawable/img_chicken_sandwich</item>
         <item>@drawable/img_tacos</item>
+        <item>@drawable/img_generic_recipe</item> <!--The generic recipe needs to be the last item on the list !-->
     </array>
-    <string name="title_activity_detail">DetailActivity</string>
-    <string name="title_activity_add_item">AddItemActivity</string>
-    <string name="activity_add_item">Add new recipe</string>
-    <string name="EditView_AddItemTitle">Recipe title</string>
-    <string name="textView_AddItemTitle">Title</string>
-    <string name="textView_AddItemDescription">Description</string>
-    <string name="editText_AddItemDescription">Recipe description</string>
-    <string name="button_AddItemSend">Add</string>
 </resources>
