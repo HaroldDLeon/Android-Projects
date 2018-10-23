@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recipe_titles">
+        <item>Spaghetti</item>
+        <item>Meatballs</item>
+        <item>Mofongo</item>
+        <item>Salmon Avocado</item>
+        <item>Lemon Chicken Sandwich</item>
+        <item>Tacos</item>
+    </string-array>
+
+    <string-array name="recipe_info">
+        <item>Incredibly tasty Italian dish.</item>
+        <item>One of the best things you can try</item>
+        <item>Excellent stuff. 10/10</item>
+        <item>Great sushi, best ingredients</item>
+        <item>Lemon? Check. Chicken? Check. Awesome? Check</item>
+        <item>Viva Mexico!</item>
+    </string-array>
+
+    <array name="recipe_images">
+        <item>@drawable/img_spaguetti</item>
+        <item>@drawable/img_meatballs</item>
+        <item>@drawable/img_mofongo</item>
+        <item>@drawable/img_salmon_avocado</item>
+        <item>@drawable/img_chicken_sandwich</item>
+        <item>@drawable/img_tacos</item>
+        <item>@drawable/img_generic_recipe</item> <!--The generic recipe needs to be the last item on the list !-->
+    </array>
+
+    <string-array name="recipe_descriptions">
+        <item name="spaghetti">\n
+            \u2022 1 pound ground beef \n
+            \u2022 1 large onion, chopped \n
+            \u2022 2 garlic cloves, minced \n
+            \u2022 1 (8-ounce) can tomato sauce \n
+            \u2022 3 cups tomato juice \n
+            \u2022 1 cup water \n
+            \u2022 1 teaspoon salt \n
+            \u2022 1 teaspoon sugar \n
+            \u2022 2 to 3 teaspoons chi li powder \n
+            \u2022 1 teaspoon dried oregano \n
+            \u2022 Dash of pepper \n
+            \u2022 1 (7-ounce) package spaghetti \n
+            \u2022 uncooked Grated Parmesan cheese \n
+            \u2022 Garnish: fresh Italian parsley sprigs
+            \n \n Step 1 \n
+            \n Cook first 3 ingredients in a Dutch oven, stirring until beef crumbles and is no longer pink; drain well.
+            \n Return beef mixture to pan. Stir in tomato sauce and next 8 ingredients; bring to a boil.
+            \n Cover, reduce heat, and simmer, stirring often, 30 minutes.
+            \n \n Step 2 \n
+            \n Add pasta; cover and simmer, stirring often, 20 minutes or until pasta is tender.
+            \n Serve with cheese, and garnish, if desired.
+        </item>
+        <item name="meatballs">\n
+            \u2022 2 teaspoons olive oil \n
+            \u2022 1 medium onion, chopped \n
+            \u2022 3 garlic cloves, minced \n
+            \u2022 3/4 cup seasoned bread crumbs \n
+            \u2022 1/2 cup grated Parmesan cheese \n
+            \u2022 2 large Nellie’s Free Range Eggs, lightly beaten \n
+            \u2022 1 teaspoon each dried basil, oregano and parsley flakes \n
+            \u2022 3/4 teaspoon salt \n
+            \u2022 1 pound lean ground turkey \n
+            \u2022 1 pound lean ground beef (90% lean) \n
+            \u2022 Hot cooked pasta and pasta sauce, optional
+            \n \n [Preheat oven to 375°. In a small skillet, heat oil over medium-high heat.
+            \n \n Add onion; cook and stir 3-4 minutes or until tender.]
+            \n \n Add garlic; cook 1 minute longer. Cool slightly.
+            \n \n In a large bowl, combine bread crumbs, cheese, eggs, seasonings and onion mixture.
+            \n \n Add turkey and beef; mix lightly but thoroughly. Shape into 1-1/2-in. balls.
+            \n \n Place meatballs on a rack coated with cooking spray in a 15x10x1-in. baking pan.
+            \n \n Bake 18-22 minutes or until lightly browned and cooked through. If desired, serve with pasta and pasta sauce.</item>
+        <item name="mofongo"> \n
+            \u2022 3 garlic cloves, \n
+            \u2022 minced 3/4 ounce \n
+            \u2022 fried pork rinds, \n
+            \u2022 crushed (1/2 packed cup) \n
+            \u2022 1/2 cup extra-virgin olive oil Vegetable oil for frying 2 large green plantains (about 12 ounces each), \n
+            \u2022 peeled and cut into 1-inch-thick rounds \n
+            \u2022 Salt \n
+            \u2022 Freshly ground pepper \n
+            \u2022 1 pound medium shrimp, shelled and deveined \n
+            \u2022 1/2 cup dry white wine
+            \n \n Step 1 \n
+            \n In a bowl, combine two-thirds of the minced garlic cloves with the pork rinds and 1 tablespoon of the olive oil and mash to combine.
+            \n \n Step 2 \n
+            \n In a large saucepan, heat 1 inch of vegetable oil to 350°.
+            \n Add the plantains and fry, keeping the oil at about 300°, until very tender, but not browned, 15 minutes.
+            \n Drain and transfer the plantains to a large bowl. Using a potato masher, mash the plantains to a coarse puree with 1 tablespoon of the olive oil.
+            \n Add the garlic–pork rind mixture and mash until evenly combined. Season the mofongo with salt and pepper; keep warm.
+            \n \n Step 3 \n
+            \n In a large skillet, heat the remaining 1/4 cup plus 2 tablespoons of olive oil until shimmering.
+            \n Add the shrimp and remaining garlic, season with salt and pepper and cook over high heat, stirring occasionally, until curled, about 2 minutes.
+            \n Add the wine and boil until nearly evaporated and the shrimp are cooked through, about 2 minutes longer.
+            \n \n Step 4 \n
+            \n Spoon the mofongo into bowls and top with the shrimp. Serve right away.
+        </item>
+        <item name="salmon"> \n
+            \u2022 1 avocado, pitted, peeled, and sliced thinly \n
+            \u2022 1 tablespoon seasoned rice vinegar or lemon juice \n
+            \u2022 4 sheets nori \n
+            \u2022 About 3 cups cooked and cooled Sushi Rice (recipe link in intro) \n
+            \u2022 8 ounces sashimi-grade salmon, cut into ½-inch strips \n
+            \u2022 Pickled ginger \n
+            \u2022 Wasabi \n
+            \u2022 Soy sauce
+            \n \n Step 1 \n
+            \n Sprinkle the avocado with vinegar to prevent browning while you work.
+            \n \n Step 2 \n
+            \n Place a bamboo sushi mat on a flat work surface with the slats running horizontally.
+            \n Lay a piece of plastic wrap over the bamboo mat. \n Place a sheet of nori on the plastic wrap, shiny side down.
+            \n \n Step 3 \n
+            \n With wet hands, spread about 3/4 cup of the rice over the surface of the nori, leaving about a 1/2-inch uncovered on the furthest edge.
+            \n Press and spread the rice down firmly but gently, wetting your hands again if needed to prevent sticking.
+            \n \n Step 4 \n
+            \n Set the salmon pieces end-to-end across the center of the rice. Top the salmon with a few slices of avocado (it’s okay if they overlap a bit).
+            \n Begin rolling the edge of the bamboo closest to you over the salmon line, using the mat to press down on the sushi roll firmly but gently.
+            \n When you get to the raw edge of nori, use your finger to lightly wet the nori, then continue to roll up so it’s sealed.
+            \n The nori should stick to itself when the roll is complete.
+            \n \n Step 5 \n
+            \n Remove the plastic wrap and set the roll aside, covering with a damp cloth while you work on the remaining rolls.
+            \n Repeat until all of the rice has been used.
+            \n \n Step 6 \n
+            \n Cut each roll in half, and then half again, and then half again, so each roll is cut into 8 even pieces.
+            \n Serve with pickled ginger, wasabi, and soy sauce.
+        </item>
+        <item name="sandwich"> \n
+            \u2022 4 boneless skinless chicken breasts (6-8 oz each) \n
+            \u2022 Lemon pepper seasoning \n
+            \u2022 8 slices pepper bacon \n
+            \u2022 4 slices cheddar cheese (or your favorite cheese) \n
+            \u2022 4 sandwich buns \n
+            \u2022 Mayonnaise (or dressing of your choice) \n
+            \u2022 Tomatoes, slices (optional) \n
+            \u2022 4 lettuce leaves (optional) \n
+            \u2022 sliced onion (optional)
+            \n \n On a cutting board, pound the chicken breasts briefly with a mallet to flatten the thick parts so they\'ll cook more evenly.
+            \n \n Cut each strip of bacon in half.
+            \n Arrange strips in a large (12\") skillet and cook over medium heat until it reaches your desired crispness.
+            \n Remove cooked bacon from skillet and put on paper towels to absorb excess grease.
+            \n \n Pour off all but approximately 1 tablespoon of the bacon grease. (you can pour it all off and then add back 1 TB - you decide!).
+            \n \n Heat skillet again, over medium-low to medium heat.
+            \n \n Liberally sprinkle both sides of the chicken breasts with lemon pepper.
+            \n When the skillet is hot, place all 4 chicken breasts in it.
+            \n Cook approximately 4 minutes on one side.
+            \n \n Flip the chicken breasts over. Arrange the bacon slices on top.
+            \n Then place sliced cheese on top of the bacon.
+            \n \n Cover the skillet and cook for about another 4 minutes. The cheese should be well-melted.
+            \n To test doneness, poke the fattest part of a breast with a sharp knife - you shouldn\'t see any pink meat left in the middle.
+            \n \n Dress your bun with mayonnaise, a dijon/mayonnaise combo, or ranch dressing.
+            \n Put chicken on bun.
+            \n It tastes great without veggies, but you can also add leafy lettuce, sliced tomato, and sliced onion.
+        </item>
+        <item> \n
+            \u2022 1 lb lean ground beef \n
+            \u2022 1 medium onion, chopped \n
+            \u2022 1 teaspoon chili powder \n
+            \u2022 1/2 teaspoon salt \n
+            \u2022 1/2 teaspoon garlic powder \n
+            \u2022 1 can (8 oz) tomato sauce \n
+            \u2022 12 Old El Paso™ crunchy taco shells  \n
+            \u2022 1 1/2 cups shredded Cheddar cheese (6 oz)  \n
+            \u2022 2 cups shredded lettuce \n
+            \u2022 2 medium tomatoes, chopped \n
+            \u2022 3/4 cup Old El Paso™ Thick \'n Chunky salsa \n
+            \u2022 3/4 cup sour cream, if desired.
+            \n \n Step 1 \n
+            \n Heat oven to 250°F.
+            \n In large skillet, brown ground beef and onion over medium heat for 8 to 10 minutes or until beef is thoroughly cooked, stirring frequently. Drain.
+            \n \n Step 2 \n
+            \n Stir in chili powder, salt, garlic powder and tomato sauce.
+            \n Reduce heat to low; cover and simmer 10 minutes.
+            \n \n Step 3 \n
+            \n Meanwhile, place taco shells on ungreased cookie sheet.
+            \n Heat at 250°F. for 5 minutes.
+            \n \n Step 4 \n
+            \n To assemble tacos, layer beef mixture, cheese, lettuce and tomatoes in each taco shell.
+            \n Serve with salsa; top with sour cream.
+        </item>
+    </string-array>
+    
+    <string-array name="recipe_links">
+        <item>https://www.southernliving.com/recipes/all-in-one-spaghetti-recipe</item>
+        <item>https://www.tasteofhome.com/recipes/great-grandma-s-italian-meatballs/</item>
+        <item>https://www.foodandwine.com/recipes/mofongo-with-shrimp</item>
+        <item>https://www.chowhound.com/recipes/salmon-avocado-maki-31555</item>
+        <item>https://www.geniuskitchen.com/recipe/lemon-pepper-bacon-chicken-sandwich-pioneer-woman-329678</item>
+        <item>https://www.pillsbury.com/recipes/ground-beef-tacos/7217b5cb-5bdc-4458-a6e4-844a39188b9c</item>
+    </string-array>
+</resources>

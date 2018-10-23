@@ -22,39 +22,5 @@
         Quisque auctor ante vitae nibh aliquam iaculis. Aenean a nisi eget urna vehicula venenatis viverra nec dolor.
     </string>
 
-    <string-array name="recipe_titles">
-        <item>Spaguetti</item>
-        <item>Meatballs</item>
-        <item>Mofongo</item>
-        <item>Salmon Avocado</item>
-        <item>Lemon Chicken Sandwich</item>
-        <item>Tacos</item>
-    </string-array>
 
-    <string-array name="recipe_info">
-        <item>Very tasty treat. Would recommend</item>
-        <item>One of the best things you can try</item>
-        <item>Excellent stuff. 10/10</item>
-        <item>Great sushi, best ingredients</item>
-        <item>Lemon? Check. Chicken? Check. Awesome? Check</item>
-        <item>Viva Mexico!</item>
-    </string-array>
-    <string-array name="recipe_descriptions">
-        <item>Incredibly tasty italian pasta</item>
-        <item>Want to go to Ikea?</item>
-        <item>Dale mambo!</item>
-        <item>Salmon</item>
-        <item>Sandwich</item>
-        <item>Tacos</item>
-    </string-array>
-
-    <array name="recipe_images">
-        <item>@drawable/img_spaguetti</item>
-        <item>@drawable/img_meatballs</item>
-        <item>@drawable/img_mofongo</item>
-        <item>@drawable/img_salmon_avocado</item>
-        <item>@drawable/img_chicken_sandwich</item>
-        <item>@drawable/img_tacos</item>
-        <item>@drawable/img_generic_recipe</item> <!--The generic recipe needs to be the last item on the list !-->
-    </array>
 </resources>
