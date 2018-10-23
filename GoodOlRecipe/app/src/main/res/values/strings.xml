@@ -7,11 +7,15 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="title_activity_add_item">AddItemActivity</string>
     <string name="activity_add_item">Add new recipe</string>
-    <string name="EditView_AddItemTitle">Recipe title</string>
+    <string name="editView_AddItemTitle">Recipe title</string>
     <string name="textView_AddItemTitle">Title</string>
+    <string name="textView_AddItemInfo">Info/Tag</string>
+    <string name="editText_AddItemInfo">Recipe info or tag</string>
     <string name="textView_AddItemDescription">Description</string>
     <string name="editText_AddItemDescription">Recipe description</string>
-    <string name="button_AddItemSend">Add</string>
+    <string name="editText_AddItemTitle">Recipe title</string>
+    <string name="textView_AddItemLink">Recipe link</string>
+    <string name="editText_AddItemLink">Recipe link</string>
     <string name="recipe_detail_placeholder" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo arcu, rutrum at viverra in, ornare in arcu.
         Nullam dolor urna, porta id tempor id, ultricies in sapien. Praesent vehicula ex id blandit semper.
@@ -21,6 +25,5 @@
         per inceptos himenaeos. Nunc blandit pharetra augue, eu vulputate leo.
         Quisque auctor ante vitae nibh aliquam iaculis. Aenean a nisi eget urna vehicula venenatis viverra nec dolor.
     </string>
-
-
+    <string name="button_AddItemSend">Add</string>
 </resources>
