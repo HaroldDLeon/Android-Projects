@@ -1,8 +1,10 @@
 package com.harolddleon.goodolrecipe;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,14 +54,35 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
         private TextView descriptionText;
         private ImageView recipeImage;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull final View itemView) {
             super(itemView);
             titleText = (TextView) itemView.findViewById(R.id.title);
             infoText = (TextView) itemView.findViewById(R.id.subTitle);
             descriptionText = (TextView) itemView.findViewById(R.id.recipeDescriptionDetail);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
-            itemView.setOnClickListener(this);
 
+            recipeImage.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+                    alert.setTitle("Are you sure you want to remove that recipe?");
+                    alert.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            recipes.remove(getAdapterPosition());
+                            RecipeAdapter.super.notifyItemRemoved(getAdapterPosition());
+                        }
+                    });
+                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    alert.show();
+                    return false;
+                }
+            });
         }
 
         void bindTo(Recipe currentRecipe) {
@@ -77,7 +100,6 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
             detail_intent.putExtra("link", currentRecipe.getLink());
             detail_intent.putExtra("image", currentRecipe.getImageResource());
             context.startActivity(detail_intent);
-
         }
     }
 }

@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void removeItem() {
+
+    }
     private void initialize() {
         String[] recipeList = getResources().getStringArray(R.array.recipe_titles);
         String[] recipeInfo = getResources().getStringArray(R.array.recipe_info);
