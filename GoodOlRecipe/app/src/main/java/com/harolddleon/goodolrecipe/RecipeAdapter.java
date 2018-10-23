@@ -60,7 +60,6 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
             infoText = (TextView) itemView.findViewById(R.id.subTitle);
             descriptionText = (TextView) itemView.findViewById(R.id.recipeDescriptionDetail);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
-
             recipeImage.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -83,6 +82,8 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
                     return false;
                 }
             });
+            recipeImage.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         void bindTo(Recipe currentRecipe) {
