@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddItemActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
     private EditText recipeTitle;
@@ -50,10 +51,10 @@ public class AddItemActivity extends AppCompatActivity implements TextWatcher, V
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("new_recipe_title", recipeTitle.getText());
-        intent.putExtra("new_recipe_description", recipeDescription.getText());
-
+        Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
+        intent.putExtra("new_recipe_title", recipeTitle.getText().toString());
+        intent.putExtra("new_recipe_description", recipeDescription.getText().toString());
+        startActivity(intent);
 
     }
 }

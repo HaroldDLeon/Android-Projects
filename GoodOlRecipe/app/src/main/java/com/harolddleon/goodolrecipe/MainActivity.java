@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         reciclerView = (RecyclerView) findViewById(R.id.recyclerView);
         reciclerView.setLayoutManager(new LinearLayoutManager(this));
+
         recipes = new ArrayList<>();
         recipeAdapter = new RecipeAdapter(this, recipes);
         reciclerView.setAdapter(recipeAdapter);
@@ -69,7 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
         reciclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
+        Intent intent = getIntent();
 
+        String new_recipe_title = intent.getStringExtra("new_recipe_title");
+        String new_recipe_description = intent.getStringExtra("new_recipe_description");
+        addRecipe(new_recipe_title, new_recipe_description);
     }
 
     private void initialize() {
@@ -86,6 +91,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recipeAdapter.notifyDataSetChanged();
     }
 
+    private void addRecipe(String title, String recipeDescription) {
+        TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
+        recipes.add(new Recipe(title, "", recipeDescription, recipeImages.getResourceId(0, 0)));
+        recipeImages.recycle();
+        recipeAdapter.notifyItemInserted(recipes.size());
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
