@@ -13,6 +13,8 @@ import android.widget.EditText;
 public class AddItemActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
     private EditText recipeTitle;
     private EditText recipeDescription;
+    private EditText recipeInfo;
+    private EditText recipeLink;
     private Button recipeAddButton;
 
     @Override
@@ -28,6 +30,8 @@ public class AddItemActivity extends AppCompatActivity implements TextWatcher, V
 
         recipeTitle = (EditText) findViewById(R.id.editText_AddItemTitle);
         recipeDescription = (EditText) findViewById(R.id.editText_AddItemDescription);
+        recipeInfo = (EditText) findViewById(R.id.editText_AddItemInfo);
+        recipeLink = (EditText) findViewById(R.id.editText_AddItemLink);
         recipeAddButton = (Button) findViewById(R.id.button_recipeAdd);
         recipeAddButton.setOnClickListener(this);
 
@@ -53,6 +57,8 @@ public class AddItemActivity extends AppCompatActivity implements TextWatcher, V
         Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
         intent.putExtra("new_recipe_title", recipeTitle.getText().toString());
         intent.putExtra("new_recipe_description", recipeDescription.getText().toString());
+        intent.putExtra("new_recipe_info", recipeInfo.getText().toString());
+        intent.putExtra("new_recipe_link", recipeLink.getText().toString());
         startActivity(intent);
 
     }

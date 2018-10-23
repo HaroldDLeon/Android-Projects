@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
+class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> implements RecyclerView.OnLongClickListener {
 
     private ArrayList<Recipe> recipes;
     private Context context;
@@ -39,6 +39,11 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return recipes.size();
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        return false;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -69,6 +74,7 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
             detail_intent.putExtra("title", currentRecipe.getTitle());
             detail_intent.putExtra("info", currentRecipe.getInfo());
             detail_intent.putExtra("description", currentRecipe.getDescription());
+            detail_intent.putExtra("link", currentRecipe.getLink());
             detail_intent.putExtra("image", currentRecipe.getImageResource());
             context.startActivity(detail_intent);
 

@@ -20,7 +20,7 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView reciclerView;
+    private RecyclerView recyclerView;
     private ArrayList<Recipe> recipes;
     private RecipeAdapter recipeAdapter;
     private Integer recipeAmount;
@@ -32,14 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        reciclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        reciclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recipes = new ArrayList<>();
         recipeAdapter = new RecipeAdapter(this, recipes);
-        reciclerView.setAdapter(recipeAdapter);
+        recyclerView.setAdapter(recipeAdapter);
         initialize();
-
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
                 (ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN
                         | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        helper.attachToRecyclerView(reciclerView);
+        helper.attachToRecyclerView(recyclerView);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,14 +70,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
-        reciclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
 
         Intent intent = this.getIntent();
 
         if (intent.getExtras() != null) {
             String new_recipe_title = intent.getStringExtra("new_recipe_title");
             String new_recipe_description = intent.getStringExtra("new_recipe_description");
-            addRecipe(new_recipe_title, new_recipe_description);
+            String new_recipe_info = intent.getStringExtra("new_recipe_info");
+            String new_recipe_link = intent.getStringExtra("new_recipe_link");
+            addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
         }
     }
 
@@ -86,20 +87,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String[] recipeList = getResources().getStringArray(R.array.recipe_titles);
         String[] recipeInfo = getResources().getStringArray(R.array.recipe_info);
         String[] recipeDescription = getResources().getStringArray(R.array.recipe_descriptions);
+        String[] recipeLinks = getResources().getStringArray(R.array.recipe_links);
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
         recipeAmount = recipeInfo.length;
         recipes.clear();
 
         for (int i = 0; i < recipeList.length; i++) {
-            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeDescription[i], recipeImages.getResourceId(i, 0)));
+            recipes.add(new Recipe(recipeList[i], recipeInfo[i], recipeDescription[i], recipeLinks[i], recipeImages.getResourceId(i, 0)));
         }
         recipeImages.recycle();
         recipeAdapter.notifyDataSetChanged();
     }
 
-    private void addRecipe(String title, String recipeDescription) {
+    private void addRecipe(String title, String info, String recipeDescription, String recipeLink) {
         TypedArray recipeImages = getResources().obtainTypedArray(R.array.recipe_images);
-        recipes.add(new Recipe(title, "", recipeDescription, recipeImages.getResourceId(recipeAmount, recipeAmount)));
+        recipes.add(new Recipe(title, info, recipeDescription, recipeLink, recipeImages.getResourceId(recipeAmount, recipeAmount)));
         recipeImages.recycle();
         recipeAdapter.notifyItemInserted(recipes.size());
 
