@@ -73,12 +73,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = this.getIntent();
 
-        if ((intent.getExtras() != null) && !intent.getStringExtra("new_recipe_title").equals("")) {
-            String new_recipe_title = intent.getStringExtra("new_recipe_title");
-            String new_recipe_description = intent.getStringExtra("new_recipe_description");
-            String new_recipe_info = intent.getStringExtra("new_recipe_info");
-            String new_recipe_link = intent.getStringExtra("new_recipe_link");
-            addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
+        if ((intent.getStringExtra("new_reciple_title") != null)) {
+            if (!intent.getStringExtra("new_recipe_title").equals("")) {
+                String new_recipe_title = intent.getStringExtra("new_recipe_title");
+                String new_recipe_description = intent.getStringExtra("new_recipe_description");
+                String new_recipe_info = intent.getStringExtra("new_recipe_info");
+                String new_recipe_link = intent.getStringExtra("new_recipe_link");
+                addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
+            }
         }
     }
 
