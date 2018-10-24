@@ -48,7 +48,7 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
         return false;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private TextView titleText;
         private TextView infoText;
         private TextView descriptionText;
@@ -60,28 +60,10 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
             infoText = (TextView) itemView.findViewById(R.id.subTitle);
             descriptionText = (TextView) itemView.findViewById(R.id.recipeDescriptionDetail);
             recipeImage = (ImageView) itemView.findViewById(R.id.recipeImage);
-            recipeImage.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
-                    alert.setTitle("Are you sure you want to remove that recipe?");
-                    alert.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            recipes.remove(getAdapterPosition());
-                            RecipeAdapter.super.notifyItemRemoved(getAdapterPosition());
-                        }
-                    });
-                    alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
 
-                        }
-                    });
-                    alert.show();
-                    return false;
-                }
-            });
+            recipeImage.setOnLongClickListener(this);
+            itemView.setOnLongClickListener(this);
+
             recipeImage.setOnClickListener(this);
             itemView.setOnClickListener(this);
         }
@@ -101,6 +83,27 @@ class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> imple
             detail_intent.putExtra("link", currentRecipe.getLink());
             detail_intent.putExtra("image", currentRecipe.getImageResource());
             context.startActivity(detail_intent);
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+            alert.setTitle("Are you sure you want to remove that recipe?");
+            alert.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    recipes.remove(getAdapterPosition());
+                    RecipeAdapter.super.notifyItemRemoved(getAdapterPosition());
+                }
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            alert.show();
+            return false;
         }
     }
 }

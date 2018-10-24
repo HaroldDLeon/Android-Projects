@@ -20,7 +20,6 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView recyclerView;
     private ArrayList<Recipe> recipes;
     private RecipeAdapter recipeAdapter;
     private Integer recipeAmount;
@@ -29,10 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recipes = new ArrayList<>();
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         helper.attachToRecyclerView(recyclerView);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = this.getIntent();
 
-        if (intent.getExtras() != null) {
+        if ((intent.getExtras() != null) && !intent.getStringExtra("new_recipe_title").equals("")) {
             String new_recipe_title = intent.getStringExtra("new_recipe_title");
             String new_recipe_description = intent.getStringExtra("new_recipe_description");
             String new_recipe_info = intent.getStringExtra("new_recipe_info");
@@ -83,9 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void removeItem() {
-
-    }
     private void initialize() {
         String[] recipeList = getResources().getStringArray(R.array.recipe_titles);
         String[] recipeInfo = getResources().getStringArray(R.array.recipe_info);
