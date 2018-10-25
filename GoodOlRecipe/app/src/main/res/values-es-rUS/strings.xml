@@ -6,4 +6,16 @@
     <string name="description_placeholder">He aqui algunas noticias</string>
     <string name="image_desc">Imagen para la receta actual</string>
     <string name="title_activity_detail">Actividad de detalles</string>
+    <string name="title_activity_add_item">Actividad de añadir articulos</string>
+    <string name="activity_add_item">Agregar receta nueva</string>
+    <string name="editView_AddItemTitle">Titulo de receta</string>
+    <string name="textView_AddItemTitle">Titulo</string>
+    <string name="textView_AddItemInfo">Informacion</string>
+    <string name="editText_AddItemInfo">Informacion de receta</string>
+    <string name="textView_AddItemDescription">Descripcion</string>
+    <string name="editText_AddItemDescription">Descripcion de receta</string>
+    <string name="editText_AddItemTitle">Titulo de receta</string>
+    <string name="textView_AddItemLink">Link de la receta</string>
+    <string name="editText_AddItemLink">Link de la receta</string>
+    <string name="button_AddItemSend">Añadir</string>
 </resources>
