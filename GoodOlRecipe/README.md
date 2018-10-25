@@ -11,9 +11,9 @@ This app is just a demo for a recipe app using RecycleViews for view reusing, or
 
 ## Demo screen
 <p align="center">
-  <img src="Demo Screens/Good-Ol-Recipe-1.jpg" width="250" title="MainActivity">
-  <img src="Demo Screens/Good-Ol-Recipe-2.jpg" width="250" title="Recipe DetailActivity">
-  <img src="Demo Screens/Good-Ol-Recipe-3.jpg" width="250" title="New Recipe Activity">
+  <img src="../Demo Screens/Good-Ol-Recipe-1.jpg" width="250" title="MainActivity">
+  <img src="../Demo Screens/Good-Ol-Recipe-2.jpg" width="250" title="Recipe DetailActivity">
+  <img src="../Demo Screens/Good-Ol-Recipe-3.jpg" width="250" title="New Recipe Activity">
 </p>
 
 ## Libraries used
