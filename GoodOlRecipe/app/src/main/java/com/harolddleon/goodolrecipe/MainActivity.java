@@ -11,8 +11,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -73,14 +71,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent intent = this.getIntent();
 
-        if ((intent.getStringExtra("new_reciple_title") != null)) {
-            if (!intent.getStringExtra("new_recipe_title").equals("")) {
-                String new_recipe_title = intent.getStringExtra("new_recipe_title");
-                String new_recipe_description = intent.getStringExtra("new_recipe_description");
-                String new_recipe_info = intent.getStringExtra("new_recipe_info");
-                String new_recipe_link = intent.getStringExtra("new_recipe_link");
-                addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
-            }
+        if (getIntent().getExtras() != null) {
+            String new_recipe_title = intent.getStringExtra("new_recipe_title");
+            String new_recipe_description = intent.getStringExtra("new_recipe_description");
+            String new_recipe_info = intent.getStringExtra("new_recipe_info");
+            String new_recipe_link = intent.getStringExtra("new_recipe_link");
+            addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
         }
     }
 
@@ -106,28 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recipeImages.recycle();
         recipeAdapter.notifyItemInserted(recipes.size());
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

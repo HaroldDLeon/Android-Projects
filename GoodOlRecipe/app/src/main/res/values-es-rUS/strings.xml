@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Good Ol\' Recipe</string>
-    <string name="action_settings">Configuración</string>
+    <string name="action_share">Configuración</string>
     <string name="title_placeholder">Título</string>
     <string name="description_placeholder">He aqui algunas noticias</string>
     <string name="image_desc">Imagen para la receta actual</string>
