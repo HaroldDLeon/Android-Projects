@@ -1,6 +1,7 @@
 package com.harolddleon.goodolrecipe;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        RecipeBroadcastReceiver receiver = new RecipeBroadcastReceiver();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.harolddleon.ACTION_RECIPE_SHOW");
+        registerReceiver(receiver, intentFilter);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -36,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recipeAdapter = new RecipeAdapter(this, recipes);
         recyclerView.setAdapter(recipeAdapter);
         initialize();
+
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
                 (ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN
                         | ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -62,22 +71,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
         int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
         recyclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
+    }
 
-        Intent intent = this.getIntent();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Toast.makeText(this, "Hello friends", Toast.LENGTH_SHORT).show();
+        String new_recipe_title = data.getStringExtra("new_recipe_title");
+        String new_recipe_description = data.getStringExtra("new_recipe_description");
+        String new_recipe_info = data.getStringExtra("new_recipe_info");
+        String new_recipe_link = data.getStringExtra("new_recipe_link");
 
-        if (getIntent().getExtras() != null) {
-            String new_recipe_title = intent.getStringExtra("new_recipe_title");
-            String new_recipe_description = intent.getStringExtra("new_recipe_description");
-            String new_recipe_info = intent.getStringExtra("new_recipe_info");
-            String new_recipe_link = intent.getStringExtra("new_recipe_link");
-            addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
-        }
+        addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
     }
 
     private void initialize() {

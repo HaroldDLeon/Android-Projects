@@ -54,12 +54,12 @@ public class AddItemActivity extends AppCompatActivity implements TextWatcher, V
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(AddItemActivity.this, MainActivity.class);
+        Intent intent = new Intent();
         intent.putExtra("new_recipe_title", recipeTitle.getText().toString());
         intent.putExtra("new_recipe_description", recipeDescription.getText().toString());
         intent.putExtra("new_recipe_info", recipeInfo.getText().toString());
         intent.putExtra("new_recipe_link", recipeLink.getText().toString());
-        startActivity(intent);
-
+        setResult(1, intent);
+        finish();
     }
 }
