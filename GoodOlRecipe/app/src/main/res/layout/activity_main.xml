@@ -16,26 +16,24 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            />
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="?android:attr/actionBarSize"
-        />
+        android:scrollbars="vertical" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/activity_card_end_margin"
-        android:layout_marginBottom="@dimen/activity_card_end_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/activity_card_end_margin"
+        android:layout_marginEnd="@dimen/activity_card_end_margin"
         android:background="@color/colorAccent"
         app:srcCompat="@drawable/ic_add_circle" />
 

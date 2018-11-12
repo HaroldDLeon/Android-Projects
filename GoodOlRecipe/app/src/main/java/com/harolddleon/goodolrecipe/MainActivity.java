@@ -13,7 +13,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.harolddleon.ACTION_RECIPE_SHOW");
+        intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
+        intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         registerReceiver(receiver, intentFilter);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -81,13 +82,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Toast.makeText(this, "Hello friends", Toast.LENGTH_SHORT).show();
-        String new_recipe_title = data.getStringExtra("new_recipe_title");
-        String new_recipe_description = data.getStringExtra("new_recipe_description");
-        String new_recipe_info = data.getStringExtra("new_recipe_info");
-        String new_recipe_link = data.getStringExtra("new_recipe_link");
 
-        addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
+        String new_recipe_title;
+        String new_recipe_description;
+        String new_recipe_info;
+        String new_recipe_link;
+        try {
+            new_recipe_title = data.getStringExtra("new_recipe_title");
+            new_recipe_description = data.getStringExtra("new_recipe_description");
+            new_recipe_info = data.getStringExtra("new_recipe_info");
+            new_recipe_link = data.getStringExtra("new_recipe_link");
+            addRecipe(new_recipe_title, new_recipe_info, new_recipe_description, new_recipe_link);
+        } catch (Exception ignored) {
+
+        }
+
     }
 
     private void initialize() {
