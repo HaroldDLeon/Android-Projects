@@ -94,6 +94,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
     public boolean onLongClick(View v) {
         return false;
     }

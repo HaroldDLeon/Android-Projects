@@ -19,7 +19,7 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ArrayList<Recipe> recipes;
+    static ArrayList<Recipe> recipes;
     private RecipeAdapter recipeAdapter;
     private Integer recipeAmount;
 
@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.harolddleon.ACTION_RECIPE_SHOW");
-        intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
-        intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         registerReceiver(receiver, intentFilter);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
