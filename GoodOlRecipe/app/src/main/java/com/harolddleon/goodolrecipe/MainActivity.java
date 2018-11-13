@@ -125,4 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
     }
+
+    static int getRecipeAmount() {
+        return recipes.size();
+    }
 }
