@@ -1,10 +1,9 @@
 package com.harolddleon.broadcastsender;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,10 +14,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendIntent(View view) {
-        Toast.makeText(this, "Broadcast was sent", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.setAction("com.harolddleon.ACTION_RECIPE_SHOW");
         sendBroadcast(intent);
     }

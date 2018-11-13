@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BroadcastSender</string>
+    <string name="button_text">Launch random recipe!</string>
 </resources>
