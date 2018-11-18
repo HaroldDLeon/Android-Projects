@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -67,7 +69,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             editor.putBoolean("layout_initiated", true).apply();
         }
     }
- 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     @Override
     public void onClick(DialogInterface dialog, int which) {
         switch (which) {
@@ -91,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 break;
         }
     }
+
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
@@ -125,6 +135,19 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(this, "Settings activity called", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     private void updateScores() {
         textViewAwayScore.setText(String.format(Locale.US, "%d", awayScore));
         textViewHomeScore.setText(String.format(Locale.US, "%d", homeScore));
@@ -145,10 +168,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     private void homeWon() {
         String homeTeam = buttonViewHome.getText().toString();
         int score = homeScore - awayScore;
-        createIntent(homeTeam, score );
+        createIntent(homeTeam, score);
 
     }
-    private void createIntent(String winner, int score){
+
+    private void createIntent(String winner, int score) {
         Intent intent = new Intent(this, WinnerActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_WINNER", winner);

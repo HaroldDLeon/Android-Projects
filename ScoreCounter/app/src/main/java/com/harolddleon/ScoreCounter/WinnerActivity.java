@@ -12,11 +12,7 @@ import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 
 public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener {
@@ -61,7 +57,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_winner, menu);
         return true;
     }
 
@@ -69,17 +65,8 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_share:
                 createLayout();
-                return true;
-            case R.id.sms_menu:
-                smsIntent();
-                return true;
-            case R.id.phone_menu:
-                showPhoneInput();
-                return true;
-            case R.id.map_menu:
-                mapIntent();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -118,19 +105,6 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         more_share = (ImageButton) findViewById(R.id.more_share);
         more_share.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == map_button) {
-            mapIntent();
-        } else if (v == phone_button) {
-            showPhoneInput();
-        } else if (v == sms_button) {
-            smsIntent();
-        } else if (v == more_share) {
-            shareIntent();
-        }
     }
 
     private void showPhoneInput() {
@@ -179,6 +153,18 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(Intent.createChooser(intent, "Use an app"));
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == map_button) {
+            mapIntent();
+        } else if (v == phone_button) {
+            showPhoneInput();
+        } else if (v == sms_button) {
+            smsIntent();
+        } else if (v == more_share) {
+            shareIntent();
+        }
+    }
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
