@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         return true;
     }
 
-
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
