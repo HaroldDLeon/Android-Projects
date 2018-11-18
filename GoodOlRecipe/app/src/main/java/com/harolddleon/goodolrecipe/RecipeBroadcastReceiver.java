@@ -10,9 +10,9 @@ public class RecipeBroadcastReceiver extends android.content.BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        MainActivity instance = new MainActivity();
+        MainActivity main = new MainActivity();
 
-        int random_recipe = (int) (Math.random() * instance.getRecipeAmount());
+        int random_recipe = (int) (Math.random() * main.getRecipeAmount());
 
         ArrayList<Recipe> recipes = MainActivity.recipes;
         Recipe recipe = recipes.get(random_recipe);
@@ -26,7 +26,7 @@ public class RecipeBroadcastReceiver extends android.content.BroadcastReceiver {
         detail_intent.putExtra("image", recipe.getImageResource());
 
         detail_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        Toast.makeText(context, "Happy Cooking " + recipe.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Enjoy your " + recipe.getTitle() + " :)", Toast.LENGTH_SHORT).show();
         context.startActivity(detail_intent);
     }
 }
