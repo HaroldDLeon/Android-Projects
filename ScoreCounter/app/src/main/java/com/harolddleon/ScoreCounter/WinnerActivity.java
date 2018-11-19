@@ -3,8 +3,10 @@ package com.harolddleon.ScoreCounter;
 import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,22 +16,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import java.util.Locale;
 
-public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener {
+import static java.lang.String.format;
+
+
+public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private AlertDialog.Builder builder;
     private TextView textViewWinnerTeam;
+
     private LinearLayout share_layout;
     private ImageButton phone_button;
     private ImageButton sms_button;
     private ImageButton map_button;
     private ImageButton more_share;
+    private ImageView background;
 
     private String alert;
     private EditText input;
+
     private String winner;
     private Intent intent;
     private int advantage;
+
+    private SharedPreferences preferences;
+
     private boolean layout_visible = false;
     private boolean layout_initiated = false;
 
@@ -41,17 +53,24 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         Toolbar winner_toolbar = (Toolbar) findViewById(R.id.winner_toolbar);
         setSupportActionBar(winner_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         share_layout = (LinearLayout) findViewById(R.id.share_layout);
         share_layout.setVisibility(View.GONE);
 
         Bundle extras = getIntent().getExtras();
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.registerOnSharedPreferenceChangeListener(this);
 
+        assert extras != null;
         winner = extras.getString("EXTRA_WINNER");
         advantage = extras.getInt("EXTRA_SCORE");
-        alert = String.format("Congratulations, %s won by %d point(s)!", winner, advantage);
+        alert = format(Locale.US, "Congratulations, %s won by %d point(s)!", winner, advantage);
 
         textViewWinnerTeam = findViewById(R.id.textView_WinnerTeam);
         textViewWinnerTeam.setText(alert);
+
+        background = (ImageView) findViewById(R.id.winner_image_background);
+        updateBackground();
     }
 
     @Override
@@ -59,6 +78,31 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
         getMenuInflater().inflate(R.menu.menu_winner, menu);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == map_button) {
+            mapIntent();
+        } else if (v == phone_button) {
+            phoneIntent();
+        } else if (v == sms_button) {
+            smsIntent();
+        } else if (v == more_share) {
+            shareIntent();
+        }
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch (which) {
+            case DialogInterface.BUTTON_POSITIVE:
+                phoneIntent();
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                dialog.cancel();
+                break;
+        }
     }
 
     @Override
@@ -73,12 +117,26 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    private void updateBackground() {
+        int background_value = Integer.parseInt(preferences.getString("background_list", "1"));
+        switch (background_value) {
+            case -1:
+                background.setImageResource(R.drawable.ic_background_thumbs);
+                break;
+            case 0:
+                background.setImageResource(R.drawable.ic_medal_background);
+                break;
+            case 1:
+                background.setImageResource(R.drawable.ic_background_trophy);
+                break;
+        }
+    }
+
     private void createLayout() {
         if (!layout_initiated) {
             Toast.makeText(this, "Share the good news!", Toast.LENGTH_SHORT).show();
             layout_initiated = !layout_initiated;
         }
-
         if (!layout_visible) {
             setListeners();
             ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(share_layout, View.ALPHA, 0, 1).setDuration(1000);
@@ -106,18 +164,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         more_share = (ImageButton) findViewById(R.id.more_share);
         more_share.setOnClickListener(this);
     }
-
-    private void showPhoneInput() {
-        builder = new AlertDialog.Builder(this);
-        input = new EditText(this);
-        builder.setTitle("What's the phone number to dial?");
-        input.setInputType(InputType.TYPE_CLASS_PHONE);
-        builder.setView(input);
-        builder.setPositiveButton("Call", this);
-        builder.setNegativeButton("Cancel", this);
-        builder.show();
-    }
-
+    
     private void mapIntent() {
         Uri geolocation = Uri.parse("geo:0,0?q=basketball%20near%20me");
         intent = new Intent(Intent.ACTION_VIEW);
@@ -127,7 +174,13 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void phoneIntent(String phone) {
+    private void phoneIntent() {
+        int phone = Integer.parseInt(
+                preferences.getString("default_contact",
+                        getResources().getString(R.string.pref_value_default_contact)
+                )
+        );
+
         intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phone));
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -136,7 +189,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void smsIntent() {
-        String message = String.format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
+        String message = format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
         intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("sms:"));
         intent.putExtra("sms_body", message);
@@ -146,7 +199,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void shareIntent() {
-        String message = String.format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
+        String message = format("Hey! %s just won by %d points! What a game that was!", winner, advantage);
         intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.setType("text/plain");
@@ -154,27 +207,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View v) {
-        if (v == map_button) {
-            mapIntent();
-        } else if (v == phone_button) {
-            showPhoneInput();
-        } else if (v == sms_button) {
-            smsIntent();
-        } else if (v == more_share) {
-            shareIntent();
-        }
-    }
-
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        switch (which) {
-            case DialogInterface.BUTTON_POSITIVE:
-                phoneIntent(input.getText().toString());
-                break;
-            case DialogInterface.BUTTON_NEGATIVE:
-                dialog.cancel();
-                break;
-        }
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        updateBackground();
     }
 }

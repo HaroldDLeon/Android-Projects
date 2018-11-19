@@ -1,18 +1,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Test Section">
+    <PreferenceCategory android:title="App Settings">
+
         <SwitchPreference
             android:defaultValue="false"
             android:key="nigh_mode"
             android:summary="@string/pref_description_night_mode"
             android:title="@string/pref_title_night_mode" />
-    </PreferenceCategory>
 
-    <PreferenceCategory android:title="Sport settings">
-        <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-        <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-
-        <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
-             dismiss it. -->
         <ListPreference
             android:defaultValue="-1"
             android:entries="@array/pref_sport_list_titles"
@@ -21,6 +15,29 @@
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:title="@string/pref_title_sports_name" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/pref_background_list_titles"
+            android:entryValues="@array/pref_background_list_values"
+            android:key="background_list"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_background_list" />
+
+        <EditTextPreference
+            android:capitalize="words"
+            android:defaultValue="@string/pref_value_default_contact"
+            android:inputType="phone"
+            android:key="default_contact"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_title_default_contact" />
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="Team settings">
 
         <EditTextPreference
             android:capitalize="words"
@@ -41,7 +58,5 @@
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:title="@string/pref_title_away_name" />
-
-
     </PreferenceCategory>
 </PreferenceScreen>

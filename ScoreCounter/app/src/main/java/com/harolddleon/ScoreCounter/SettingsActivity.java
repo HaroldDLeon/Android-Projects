@@ -155,6 +155,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
             // to their values.
+            bindPreferenceSummaryToValue(findPreference("default_contact"));
+            bindPreferenceSummaryToValue(findPreference("background_list"));
             bindPreferenceSummaryToValue(findPreference("home_text"));
             bindPreferenceSummaryToValue(findPreference("away_text"));
             bindPreferenceSummaryToValue(findPreference("sports_list"));
