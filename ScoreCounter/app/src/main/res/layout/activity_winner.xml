@@ -40,14 +40,14 @@
         android:typeface="normal" />
 
     <ImageView
-        android:id="@+id/imageView_Trophy"
+        android:id="@+id/winner_image_background"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_column="0"
         android:layout_row="4"
         android:layout_rowSpan="3"
         android:contentDescription="@string/image_description"
-        android:src="@drawable/finals_trophy" />
+        android:src="@drawable/ic_background_trophy" />
 
     <LinearLayout
 
