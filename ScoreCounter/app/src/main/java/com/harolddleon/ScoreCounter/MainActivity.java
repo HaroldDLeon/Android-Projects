@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(this, "Settings activity called", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
@@ -91,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Toast.makeText(this, "Changes done", Toast.LENGTH_SHORT).show();
         updateTitles();
     }
 
