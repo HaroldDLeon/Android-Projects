@@ -164,7 +164,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         more_share = (ImageButton) findViewById(R.id.more_share);
         more_share.setOnClickListener(this);
     }
-    
+
     private void mapIntent() {
         Uri geolocation = Uri.parse("geo:0,0?q=basketball%20near%20me");
         intent = new Intent(Intent.ACTION_VIEW);
