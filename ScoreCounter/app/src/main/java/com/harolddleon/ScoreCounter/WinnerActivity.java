@@ -223,9 +223,10 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
             case Configuration.UI_MODE_NIGHT_YES:
                 winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 break;
-
             case Configuration.UI_MODE_NIGHT_NO:
-                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
                 break;
         }
     }
