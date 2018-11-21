@@ -4,13 +4,13 @@ import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +25,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
 
     private AlertDialog.Builder builder;
     private TextView textViewWinnerTeam;
+    private Toolbar winner_toolbar;
 
     private LinearLayout share_layout;
     private ImageButton phone_button;
@@ -50,7 +51,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winner);
 
-        Toolbar winner_toolbar = (Toolbar) findViewById(R.id.winner_toolbar);
+        winner_toolbar = (Toolbar) findViewById(R.id.winner_toolbar);
         setSupportActionBar(winner_toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -70,7 +71,9 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         textViewWinnerTeam.setText(alert);
 
         background = (ImageView) findViewById(R.id.winner_image_background);
+
         updateBackground();
+        updateToolbar();
     }
 
     @Override
@@ -115,6 +118,11 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        updateBackground();
     }
 
     private void updateBackground() {
@@ -206,8 +214,18 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         startActivity(Intent.createChooser(intent, "Use an app"));
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        updateBackground();
+    private void updateToolbar() {
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                break;
+        }
     }
 }

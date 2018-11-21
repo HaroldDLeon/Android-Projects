@@ -2,18 +2,18 @@ package com.harolddleon.ScoreCounter;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setContentView(R.layout.activity_main);
 
         textViewHomeScore = findViewById(R.id.textView_HomeTeamScore);
         textViewAwayScore = findViewById(R.id.textView_AwayTeamScore);
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome.setOnClickListener(this);
 
         updateTitles();
+        updateDrawables();
     }
 
     @Override
@@ -90,7 +91,34 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case "night_mode":
+                recreate();
+                break;
+            case "home_text":
+                updateTitles();
+                break;
+            case "away_text":
+                updateTitles();
+                break;
+        }
         updateTitles();
+    }
+
+    private void updateDrawables() {
+        ViewGroup main_layout = findViewById(R.id.main_layout);
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court));
+                break;
+        }
     }
 
     private void updateTitles() {
