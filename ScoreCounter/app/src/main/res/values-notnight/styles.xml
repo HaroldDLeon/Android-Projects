@@ -4,9 +4,16 @@
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowBackground">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <!-- Icons -->
+        <item name="icon_settings">@drawable/ic_settings_black</item>
+        <item name="icon_share">@drawable/ic_share_black</item>
+        <item name="icon_info">@drawable/ic_info_black</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.DarkActionBar">
@@ -14,10 +21,16 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+
         <item name="android:actionMenuTextColor">@color/colorTextDark</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Icons -->
+        <item name="icon_settings">@drawable/ic_settings_black</item>
+        <item name="icon_share">@drawable/ic_share_black</item>
+        <item name="icon_info">@drawable/ic_info_black</item>
     </style>
 
 </resources>

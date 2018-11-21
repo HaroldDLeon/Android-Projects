@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="icon_settings" format="reference" />
+    <attr name="icon_share" format="reference" />
+    <attr name="icon_info" format="reference" />
+</resources>

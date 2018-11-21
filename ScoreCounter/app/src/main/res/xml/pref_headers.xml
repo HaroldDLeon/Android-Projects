@@ -3,12 +3,12 @@
     <!-- These settings headers are only used on tablets. -->
     <header
         android:fragment="com.harolddleon.ScoreCounter.SettingsActivity$GeneralPreferenceFragment"
-        android:icon="@drawable/ic_settings_black"
+        android:icon="?attr/icon_settings"
         android:title="@string/pref_header_general" />
 
     <header
         android:fragment="com.harolddleon.ScoreCounter.SettingsActivity$AboutPreferenceFragment"
-        android:icon="@drawable/ic_info_black"
+        android:icon="?attr/icon_info"
         android:title="@string/pref_header_about" />
 
 </preference-headers>
