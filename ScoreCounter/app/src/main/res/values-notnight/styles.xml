@@ -11,9 +11,13 @@
         <item name="android:textColorSecondary">@android:color/white</item>
 
         <!-- Icons -->
+        <item name="icon_info">@drawable/ic_info_black</item>
+        <item name="icon_map">@drawable/ic_map_black</item>
+        <item name="icon_more">@drawable/ic_more_black</item>
+        <item name="icon_phone">@drawable/ic_phone_black</item>
         <item name="icon_settings">@drawable/ic_settings_black</item>
         <item name="icon_share">@drawable/ic_share_black</item>
-        <item name="icon_info">@drawable/ic_info_black</item>
+        <item name="icon_sms">@drawable/ic_sms_black</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.DarkActionBar">

@@ -28,10 +28,11 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private Toolbar winner_toolbar;
 
     private LinearLayout share_layout;
-    private ImageButton phone_button;
-    private ImageButton sms_button;
-    private ImageButton map_button;
-    private ImageButton more_share;
+
+    private ImageView phone_button;
+    private ImageView sms_button;
+    private ImageView map_button;
+    private ImageView more_share;
     private ImageView background;
 
     private String alert;
@@ -160,16 +161,16 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setListeners() {
-        phone_button = (ImageButton) findViewById(R.id.phone_share);
+        phone_button = (ImageView) findViewById(R.id.phone_share);
         phone_button.setOnClickListener(this);
 
-        sms_button = (ImageButton) findViewById(R.id.sms_share);
+        sms_button = (ImageView) findViewById(R.id.sms_share);
         sms_button.setOnClickListener(this);
 
-        map_button = (ImageButton) findViewById(R.id.map_share);
+        map_button = (ImageView) findViewById(R.id.map_share);
         map_button.setOnClickListener(this);
 
-        more_share = (ImageButton) findViewById(R.id.more_share);
+        more_share = (ImageView) findViewById(R.id.more_share);
         more_share.setOnClickListener(this);
     }
 
