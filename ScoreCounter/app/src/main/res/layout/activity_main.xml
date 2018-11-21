@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -37,8 +37,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_row="9"
         android:text="@string/HomeTeamScore"
-        android:textSize="100sp"
-        />
+        android:textSize="100sp" />
 
     <TextView
         android:id="@+id/textView_AwayTeamScore"
@@ -49,6 +48,5 @@
         android:layout_gravity="center_horizontal"
         android:layout_row="1"
         android:text="@string/AwayTeamScore"
-        android:textSize="@dimen/font_size"
-        />
+        android:textSize="@dimen/font_size" />
 </GridLayout>

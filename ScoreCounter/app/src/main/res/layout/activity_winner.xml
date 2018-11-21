@@ -5,7 +5,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:background="#FFFFFF"
     tools:context=".WinnerActivity">
 
     <android.support.v7.widget.Toolbar
@@ -35,7 +34,6 @@
         android:paddingRight="10dp"
         android:text="@string/WinnerAlert"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:typeface="normal" />
 
@@ -90,7 +88,8 @@
             android:contentDescription="@string/map_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_map" />
+            android:src="@drawable/ic_baseline_map"
+            />
 
         <ImageButton
             android:id="@+id/more_share"
