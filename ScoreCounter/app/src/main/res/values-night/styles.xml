@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+
+        <item name="icon_info">@drawable/ic_info_white</item>
+        <item name="icon_map">@drawable/ic_map_white</item>
+        <item name="icon_more">@drawable/ic_more_white</item>
+        <item name="icon_phone">@drawable/ic_phone_white</item>
+        <item name="icon_settings">@drawable/ic_settings_white</item>
+        <item name="icon_share">@drawable/ic_share_white</item>
+        <item name="icon_sms">@drawable/ic_sms_white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+        <item name="android:actionMenuTextColor">@color/colorTextDark</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <item name="icon_info">@drawable/ic_info_white</item>
+        <item name="icon_map">@drawable/ic_map_white</item>
+        <item name="icon_more">@drawable/ic_more_white</item>
+        <item name="icon_phone">@drawable/ic_phone_white</item>
+        <item name="icon_settings">@drawable/ic_settings_white</item>
+        <item name="icon_share">@drawable/ic_share_white</item>
+        <item name="icon_sms">@drawable/ic_sms_white</item>
+    </style>
+
+</resources>

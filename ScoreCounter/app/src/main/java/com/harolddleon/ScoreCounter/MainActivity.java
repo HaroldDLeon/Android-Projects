@@ -1,49 +1,40 @@
 package com.harolddleon.ScoreCounter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
+import android.support.v7.app.AppCompatDelegate;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Arrays;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener, AlertDialog.OnClickListener, OnLongClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private TextView textViewHomeScore;
     private TextView textViewAwayScore;
+
     private Button buttonViewHome;
     private Button buttonViewAway;
-    private EditText input;
-    private AlertDialog.Builder builder;
+
     private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
 
-    private int homeScore = 0;
     private int awayScore = 0;
-    private int color;
-    private String text;
-    private boolean layout_initiated;
-
+    private int homeScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         setContentView(R.layout.activity_main);
-
-        preferences = getSharedPreferences("preferences", 0);
-        editor = preferences.edit();
 
         textViewHomeScore = findViewById(R.id.textView_HomeTeamScore);
         textViewAwayScore = findViewById(R.id.textView_AwayTeamScore);
@@ -51,46 +42,23 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         buttonViewHome = findViewById(R.id.buttonView_HomeTeam);
         buttonViewAway = findViewById(R.id.buttonView_AwayTeam);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.registerOnSharedPreferenceChangeListener(this);
+
         buttonViewAway.setOnClickListener(this);
         buttonViewHome.setOnClickListener(this);
-        buttonViewAway.setOnLongClickListener(this);
 
-        text = preferences.getString("team", "Golden State Warriors");
-        color = Color.parseColor(preferences.getString("color", "#006BB6"));
-
-        buttonViewAway.setText(text);
-        buttonViewAway.setBackgroundColor(color);
-
-        layout_initiated = preferences.getBoolean("layout_initiated", false);
-        if (!layout_initiated) {
-            Toast.makeText(this, "Tip: Long press Away Team to choose a different one.", Toast.LENGTH_SHORT).show();
-            editor.putBoolean("layout_initiated", true).apply();
-        }
+        updateTitles();
+        updateDrawables();
     }
- 
+
     @Override
-    public void onClick(DialogInterface dialog, int which) {
-        switch (which) {
-            case DialogInterface.BUTTON_NEGATIVE:
-                dialog.cancel();
-                break;
-            case DialogInterface.BUTTON_POSITIVE:
-                try {
-                    text = input.getText().toString();
-                    int color_index = Arrays.asList(Team.teams).indexOf(text);
-                    String hex = Team.colors[color_index];
-                    color = Color.parseColor(hex);
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-                    buttonViewAway.setBackgroundColor(color);
-                    editor.putString("team", text).apply();
-                    editor.putString("color", hex).apply();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                buttonViewAway.setText(text);
-                break;
-        }
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
     @Override
     public void onClick(View v) {
         if (v == buttonViewAway) {
@@ -109,20 +77,77 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     }
 
     @Override
-    public boolean onLongClick(View v) {
-        if (v == buttonViewAway) {
-            builder = new AlertDialog.Builder(this);
-            input = new EditText(this);
-            builder.setTitle("Who is Miami playing against?");
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            builder.setView(input);
-
-            builder.setPositiveButton("OK", this);
-            builder.setNegativeButton("Cancel", this);
-            builder.show();
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return true;
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key) {
+            case "home_text":
+                updateTitles();
+                break;
+            case "away_text":
+                updateTitles();
+                break;
+        }
+        recreate();
+    }
+
+    private void updateDrawables() {
+        ViewGroup main_layout = findViewById(R.id.main_layout);
+        String sport = preferences.getString("sports_list", "Basketball");
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (sport) {
+            case "Basketball":
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court));
+                        break;
+                }
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
+                break;
+            case "Hockey":
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_hockey_dark));
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_hockey));
+                        break;
+                }
+                break;
+            case "Baseball":
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_baseball));
+                break;
+        }
+    }
+
+    private void updateTitles() {
+        String away_text = preferences.getString("away_text", "Golden State Warriors");
+        int away_color = Team.getColor(away_text);
+
+        buttonViewAway.setText(away_text);
+        buttonViewAway.setBackgroundColor(away_color);
+
+        String home_text = preferences.getString("home_text", "Miami Heat");
+        int home_color = Team.getColor(home_text);
+
+        buttonViewHome.setText(home_text);
+        buttonViewHome.setBackgroundColor(home_color);
     }
 
     private void updateScores() {
@@ -145,10 +170,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     private void homeWon() {
         String homeTeam = buttonViewHome.getText().toString();
         int score = homeScore - awayScore;
-        createIntent(homeTeam, score );
+        createIntent(homeTeam, score);
 
     }
-    private void createIntent(String winner, int score){
+
+    private void createIntent(String winner, int score) {
         Intent intent = new Intent(this, WinnerActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_WINNER", winner);

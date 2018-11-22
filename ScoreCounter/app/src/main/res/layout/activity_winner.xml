@@ -5,7 +5,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center"
-    android:background="#FFFFFF"
     tools:context=".WinnerActivity">
 
     <android.support.v7.widget.Toolbar
@@ -35,19 +34,18 @@
         android:paddingRight="10dp"
         android:text="@string/WinnerAlert"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:typeface="normal" />
 
     <ImageView
-        android:id="@+id/imageView_Trophy"
+        android:id="@+id/winner_image_background"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_column="0"
         android:layout_row="4"
         android:layout_rowSpan="3"
         android:contentDescription="@string/image_description"
-        android:src="@drawable/finals_trophy" />
+        android:src="@drawable/ic_background_trophy" />
 
     <LinearLayout
 
@@ -58,49 +56,52 @@
         android:layout_columnSpan="3"
         android:layout_row="9"
         android:layout_rowSpan="1"
-        android:background="@android:color/transparent"
         android:gravity="bottom|center_horizontal"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/phone_share"
+            android:src="?attr/icon_phone"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
             android:contentDescription="@string/phone_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_phone" />
+            android:clickable="true"
+            android:focusable="true" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/sms_share"
+            android:src="?attr/icon_sms"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
             android:contentDescription="@string/sms_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_textsms" />
+            android:clickable="true"
+            android:focusable="true" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/map_share"
+            android:src="?attr/icon_map"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
             android:contentDescription="@string/map_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_map" />
+            android:clickable="true"
+            android:focusable="true" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/more_share"
+            android:src="?attr/icon_share"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:contentDescription="@string/map_icon"
+            android:contentDescription="@string/more_icon"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_baseline_more" />
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 
 
