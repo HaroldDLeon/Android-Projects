@@ -108,28 +108,31 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         int nightModeFlags =
                 getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
-                switch (sport) {
-                    case "Basketball":
+        switch (sport) {
+            case "Basketball":
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
                         main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
                         break;
-                    case "Hockey":
-                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_hockey_dark));
-                        break;
-                }
-                break;
-
-            case Configuration.UI_MODE_NIGHT_NO:
-                switch (sport) {
-                    case "Basketball":
+                    case Configuration.UI_MODE_NIGHT_NO:
                         main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court));
                         break;
-                    case "Hockey":
+                }
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
+                break;
+            case "Hockey":
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_hockey_dark));
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
                         main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_hockey));
                         break;
                 }
+                break;
+            case "Baseball":
+                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_baseball));
+                break;
         }
     }
 
