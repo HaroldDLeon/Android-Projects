@@ -21,7 +21,7 @@ import java.util.Locale;
 import static java.lang.String.format;
 
 
-public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+public class WinnerActivity extends AppCompatActivity implements View.OnClickListener, AlertDialog.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener, View.OnLongClickListener {
 
     private AlertDialog.Builder builder;
     private TextView textViewWinnerTeam;
@@ -126,6 +126,27 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         updateBackground();
     }
 
+    @Override
+    public boolean onLongClick(View v) {
+        return false;
+    }
+
+    private void updateToolbar() {
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                break;
+            case Configuration.UI_MODE_NIGHT_NO:
+                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
+                break;
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                break;
+        }
+    }
+
     private void updateBackground() {
         int background_value = Integer.parseInt(preferences.getString("background_list", "1"));
         switch (background_value) {
@@ -163,6 +184,7 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     private void setListeners() {
         phone_button = (ImageView) findViewById(R.id.phone_share);
         phone_button.setOnClickListener(this);
+        phone_button.setOnLongClickListener(this);
 
         sms_button = (ImageView) findViewById(R.id.sms_share);
         sms_button.setOnClickListener(this);
@@ -184,11 +206,8 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void phoneIntent() {
-        int phone = Integer.parseInt(
-                preferences.getString("default_contact",
-                        getResources().getString(R.string.pref_value_default_contact)
-                )
-        );
+        String phone = preferences.getString("default_contact",
+                        getResources().getString(R.string.pref_value_default_contact));
 
         intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + phone));
@@ -213,21 +232,5 @@ public class WinnerActivity extends AppCompatActivity implements View.OnClickLis
         intent.putExtra(Intent.EXTRA_TEXT, message);
         intent.setType("text/plain");
         startActivity(Intent.createChooser(intent, "Use an app"));
-    }
-
-    private void updateToolbar() {
-        int nightModeFlags =
-                getResources().getConfiguration().uiMode &
-                        Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                break;
-            case Configuration.UI_MODE_NIGHT_NO:
-                winner_toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));
-                break;
-            case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                break;
-        }
     }
 }
