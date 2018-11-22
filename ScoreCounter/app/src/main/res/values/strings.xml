@@ -47,7 +47,7 @@
         <item>Hockey</item>
     </string-array>
 
-    <string name="pref_background_list">App\'s Background</string>
+    <string name="pref_background_list">Winning Background</string>
     <string-array name="pref_background_list_titles">
         <item>Cup</item>
         <item>Medal</item>
