@@ -2,7 +2,7 @@
     <PreferenceCategory android:title="App Settings">
 
         <ListPreference
-            android:defaultValue="-1"
+            android:defaultValue="Basketball"
             android:entries="@array/pref_sport_list_titles"
             android:entryValues="@array/pref_sport_list_values"
             android:key="sports_list"

@@ -112,13 +112,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             case "Basketball":
                 switch (nightModeFlags) {
                     case Configuration.UI_MODE_NIGHT_YES:
-                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_basketball_dark));
                         break;
                     case Configuration.UI_MODE_NIGHT_NO:
-                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court));
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_basketball));
                         break;
                 }
-                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_heat_court_dark));
                 break;
             case "Hockey":
                 switch (nightModeFlags) {
@@ -131,7 +130,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 }
                 break;
             case "Baseball":
-                main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_baseball));
+                switch (nightModeFlags) {
+                    case Configuration.UI_MODE_NIGHT_YES:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_baseball_dark));
+                        break;
+                    case Configuration.UI_MODE_NIGHT_NO:
+                        main_layout.setBackground(getResources().getDrawable(R.drawable.ic_background_baseball));
+                        break;
+                }
                 break;
         }
     }

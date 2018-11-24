@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/ic_background_heat_court"
+    android:background="@drawable/ic_background_basketball"
     tools:context=".MainActivity">
 
     <Button
