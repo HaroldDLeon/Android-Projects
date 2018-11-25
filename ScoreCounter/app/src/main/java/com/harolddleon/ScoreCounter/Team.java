@@ -29,7 +29,7 @@ class Team {
             String hex = Team.colors[color_index];
             return Color.parseColor(hex);
         } catch (ArrayIndexOutOfBoundsException e) {
-            return Color.WHITE;
+            return Color.BLUE;
         }
     }
 
